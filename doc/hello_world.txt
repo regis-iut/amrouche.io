@@ -1,0 +1,47 @@
+#include <WiFi.h>
+#include <WebServer.h>
+
+// Définissez le nom et le mot de passe de votre propre réseau
+const char* ssid = "Mon_ESP32_S3";
+const char* password = "password123"; // 8 caractères minimum
+
+WebServer server(80);
+
+void handleRoot() {
+  String page = R"=====(
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>Mon ESP32-S3</title>
+    </head>
+    <body>
+      <h1>Hello World !</h1>
+      <p>(Mode Point d'Accès)</p>
+    </body>
+    </html>
+  )=====";
+
+  server.send(200, "text/html; charset=utf-8", page);
+}
+
+void setup() {
+  Serial.begin(115200);
+
+  // Configuration en mode Point d'Accès
+  Serial.print("Configuration du point d'accès...");
+  WiFi.softAP(ssid, password);
+
+  // Par défaut, l'adresse IP en mode AP est souvent 192.168.4.1
+  IPAddress myIP = WiFi.softAPIP();
+  Serial.print("Adresse IP du point d'accès : ");
+  Serial.println(myIP);
+
+  server.on("/", handleRoot);
+  server.begin();
+  Serial.println("Serveur prêt !");
+}
+
+void loop() {
+  server.handleClient();
+}

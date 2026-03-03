@@ -1,0 +1,546 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <title>SAE Generateur de signaux</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .language-toggle {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .toggle-btn {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #FF9966, #FF6B35);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 153, 102, 0.3);
+        }
+
+        .toggle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 153, 102, 0.4);
+        }
+
+        .niv1, .niv2, .niv3 {
+            background: linear-gradient(135deg, #FF9966, #FF6B35);
+            border-radius: 15px;
+            color: white;
+            padding: 20px;
+            margin: 30px auto;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(255, 153, 102, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .niv1::before, .niv2::before, .niv3::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .niv1:hover::before, .niv2:hover::before, .niv3:hover::before {
+            left: 100%;
+        }
+
+        .niv1 {
+            font-size: 32px;
+            font-weight: bold;
+            width: 80%;
+        }
+
+        .niv2 {
+            font-size: 28px;
+            font-weight: 600;
+            width: 70%;
+        }
+
+        .niv3 {
+            font-size: 20px;
+            font-weight: 500;
+            width: 60%;
+        }
+
+        .ligne {
+            margin: 30px 0;
+        }
+
+        .objectives {
+            background: rgba(255, 204, 51, 0.1);
+            border-left: 5px solid #FFCC33;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .objectives p {
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, #FFCC33, #FFB347);
+            color: #8B0000;
+            font-weight: 600;
+            padding: 20px 15px;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        td {
+            padding: 20px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+            line-height: 1.5;
+        }
+
+        tr:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .analysis-section {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .analysis-section p {
+            line-height: 1.7;
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* Animation pour le changement de langue */
+        .lang-content {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .lang-content.hidden {
+            display: none;
+        }
+
+        /* Styles pour les tâches dans le tableau */
+        .task-title {
+            font-weight: 600;
+            color: #667eea;
+            text-decoration: underline;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .task-item {
+            margin: 8px 0;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .task-item::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #FF9966;
+            font-weight: bold;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .niv1 {
+                font-size: 24px;
+                width: 95%;
+            }
+
+            .niv2 {
+                font-size: 22px;
+                width: 90%;
+            }
+
+            .niv3 {
+                font-size: 18px;
+                width: 85%;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            th, td {
+                padding: 15px 10px;
+            }
+        }
+
+        /* Amélioration des liens dans le tableau */
+        td a {
+            display: inline-block;
+            padding: 8px 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 20px;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        td a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Style pour les images */
+        td a[href*="images/"] {
+            background: linear-gradient(135deg, #28a745, #20c997);
+        }
+
+        td a[href*="images/"]:hover {
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        /* Style pour les documents PDF */
+        td a[href*=".pdf"] {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        td a[href*=".pdf"]:hover {
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Styles pour les sections matériel/pédagogique */
+        .resource-section {
+            margin: 10px 0;
+        }
+
+        .resource-title {
+            font-weight: 600;
+            color: #FF6B35;
+            text-decoration: underline;
+        }
+
+        /* Style pour les liens d'équipe dans les objectifs */
+        .objectives a {
+            display: inline-block;
+            padding: 4px 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            margin: 2px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .objectives a:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+            text-decoration: none;
+            color: white;
+        }
+
+        .back-link {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            margin: 30px 0;
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Style des miniatures d'images */
+        .thumbnail {
+            width: 150px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid #667eea;
+            margin-top: 10px;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Le fond noir (Overlay) */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* L'image en grand */
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+            border: 3px solid white;
+            border-radius: 5px;
+        }
+
+        /* Bouton pour fermer */
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+    </style>
+    <script>
+        let currentLang = 'fr';
+
+        function toggleLanguage() {
+            const frElements = document.querySelectorAll('.lang-fr');
+            const enElements = document.querySelectorAll('.lang-en');
+
+            if (currentLang === 'fr') {
+                frElements.forEach(el => el.classList.add('hidden'));
+                enElements.forEach(el => el.classList.remove('hidden'));
+                currentLang = 'en';
+            } else {
+                enElements.forEach(el => el.classList.add('hidden'));
+                frElements.forEach(el => el.classList.remove('hidden'));
+                currentLang = 'fr';
+            }
+        }
+
+        // Initialiser la page en français
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.lang-en').forEach(el => el.classList.add('hidden'));
+        });
+
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = src;
+            lightbox.style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+
+        // Fermer si on clique sur le fond noir
+        window.onclick = function(event) {
+            const lightbox = document.getElementById('lightbox');
+            if (event.target == lightbox) {
+                closeLightbox();
+            }
+        }
+    </script>
+</head>
+
+<body>
+<div id="lightbox" class="lightbox">
+    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" src="">
+</div>
+<div class="container">
+    <!-- Bouton pour basculer la langue -->
+    <div class="language-toggle">
+        <a href="../../index.html" class="back-link lang-fr lang-content">← Retour à la page précédente</a>
+        <a href="../../index.html" class="back-link lang-en lang-content">← Back to Previous Page</a>
+        <button class="toggle-btn" onclick="toggleLanguage()">🌐 Switch Language / Changer de langue</button>
+    </div>
+        <div class="ligne">
+            <div class="niv1 lang-fr lang-content">Générateur de signaux PWM</div>
+            <div class="niv1 lang-en lang-content">PWM signal generator</div>
+        </div>
+
+    <div class="objectives">
+        <div class="lang-fr lang-content">
+            <p><b><u>Objectifs :</u></b></p>
+            <p>
+                L'objectif de ce projet est de concevoir un prototype expérimental pour un laboratoire de recherche, capable de générer quatre signaux numériques synchronisés sur des sorties GPIO. Ce système doit permettre de tester des cartes électroniques et de valider des protocoles de communication avec les spécifications suivantes :
+            </p>
+            <div class="task-item"><b>S1 (Référence) :</b> Rapport cyclique variable (1% à 99%), fréquence réglable > 1 kHz.</div>
+            <div class="task-item"><b>S2 :</b> Identique à S1 avec une phase réglable de 0 à 360°.</div>
+            <div class="task-item"><b>S3 :</b> Fréquence multiple de S1 FS3 = q*FS1 avec q = 0,5n + 1 (n entier de 0 à 10).</div>
+            <div class="task-item"><b>S4 :</b> Identique à S3 avec une phase indépendante réglable de 0 à 360°.</div>
+            <div class="task-item"><b>Contrôle :</b> Pilotage à distance via une interface Web Wi-Fi (mode Point d'Accès).</div>
+            <div class="task-item"><b>Fiabilité :</b> Persistance des signaux en cas de perte de connexion et jitter minimal.</div>
+        </div>
+
+        <div class="lang-en lang-content">
+            <p><b><u>Objectives:</u></b></p>
+            <p>
+                The aim of this project is to develop an experimental prototype for a research laboratory, capable of generating four synchronized digital signals on GPIO outputs. This system will be used to test electronic boards and verify communication protocols with the following specifications:
+            </p>
+            <div class="task-item"><b>S1 (Reference):</b> Variable duty cycle (1% to 99%), adjustable frequency > 1 kHz.</div>
+            <div class="task-item"><b>S2:</b> Same as S1 with adjustable phase from 0 to 360°.</div>
+            <div class="task-item"><b>S3:</b> Frequency multiple of S1 FS3 = q*FS1 where q = 0.5n + 1 (n integer from 0 to 10).</div>
+            <div class="task-item"><b>S4:</b> Same as S3 with independent adjustable phase from 0 to 360°.</div>
+            <div class="task-item"><b>Control:</b> Remote management via a Wi-Fi Web interface (Access Point mode).</div>
+            <div class="task-item"><b>Reliability:</b> Signals must persist during Wi-Fi loss with minimal jitter.</div>
+        </div>
+    </div>
+
+        <table>
+            <thead>
+                <tr class="lang-fr lang-content">
+                    <th>Tâches réalisées</th>
+                    <th>Ressources utilisées</th>
+                    <th>Traces</th>
+                    <th>Autoévaluation</th>
+                </tr>
+                <tr class="lang-en lang-content">
+                    <th>Tasks Completed</th>
+                    <th>Resources Used</th>
+                    <th>Traces</th>
+                    <th>Self-Evaluation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="lang-fr lang-content">
+                        <span class="task-title">Créer une page web avec l'ESP32 :</span>
+                    </td>
+                    <td class="lang-en lang-content">
+                        <span class="task-title">Create a web page with the ESP32 :</span>
+                    </td>
+
+                    <td class="lang-fr lang-content">
+                        <div class="resource-section">
+                            <span class="resource-title">Matériel :</span><br>
+                            PC, Arduino IDE, ESP32, Antenne 2.4GHz
+                        </div>
+                        <div class="resource-section">
+                            <span class="resource-title">Pédagogique :</span><br>
+                            <a href="doc/hello_world_gemini.html">Conversation avec Gemini</a>
+                        </div>
+                    </td>
+                    <td class="lang-en lang-content">
+                        <div class="resource-section">
+                            <span class="resource-title">Material :</span><br>
+                            PC, Arduino IDE, ESP32, 2.4GHz Antenna
+                        </div>
+                        <div class="resource-section">
+                            <span class="resource-title">Educational :</span><br>
+                            <a href="doc/hello_world_gemini.html">Conversation with Gemini</a>
+                        </div>
+                    </td>
+
+                    <td class="lang-fr lang-content">
+                        <img src="images/hello_world.png" class="thumbnail" onclick="openLightbox(this.src)" alt="hello_world">
+                        <br>
+                        <a href="doc/hello_world.txt">Code pour créer la page web</a>
+                    </td>
+                    <td class="lang-en lang-content">
+                        <img src="images/hello_world.png" class="thumbnail" onclick="openLightbox(this.src)" alt="hello_world">
+                        <br>
+                        <a href="doc/hello_world.txt">Code to create the web page</a>
+                    </td>
+
+                    <td class="lang-fr lang-content">
+                    </td>
+                    <td class="lang-en lang-content">
+                    </td>
+                </tr>
+                    <td class="lang-fr lang-content">
+                    </td>
+                    <td class="lang-en lang-content">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="ligne">
+            <div class="niv2 lang-fr lang-content">Analyse Personnelle</div>
+            <div class="niv2 lang-en lang-content">Personal Analysis</div>
+        </div>
+        
+        <div class="analysis-section">
+            <div class="lang-fr lang-content">
+            </div>
+            <div class="lang-en lang-content">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
