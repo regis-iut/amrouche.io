@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BUT3 SAE ESP32 - Chronomètre Intelligent</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="images/logo_site_web.png">
+	<link rel="icon" sizes="32x32" href="images/logo_site_web.png">
+	<link rel="icon" sizes="16x16" href="images/logo_site_web.png">
+  <link rel="stylesheet" href="style_but3_sae1.css">
+</head>
+<body>
+  <div class="rectangle-titre">
+    <div class="titre">
+      <h1>Réalisation SAE ESP32 - Chronomètre Intelligent</h1>
+    </div>
+  </div>
+
+  <a href="../index_but2.html">
+		<img src="images/logo.png" alt="logo_home" class="logo_entete">
+	</a>
+
+    <div class="objectiftxt">
+      <p>
+        <b>Présentation du Projet :</b> Ce projet vise à automatiser le chronométrage de la piste de robots suiveurs de ligne. Le système repose sur une architecture distribuée de trois modules ESP32 : deux balises (Départ et Arrivée) équipées de capteurs laser et un contrôleur central.
+Pour garantir une précision optimale, la communication entre les modules utilise le protocole ESP-NOW. Le contrôleur central assure trois fonctions clés : l'identification des étudiants par RFID, le chronométrage autonome et l'hébergement d'une interface web permettant de visualiser les temps et le classement en temps réel. Les données sont stockées localement via LittleFS pour assurer leur persistance.
+
+        <br><br>
+        Pour garantir une précision optimale, la communication entre les modules utilise le protocole ESP-NOW. Le contrôleur central assure trois fonctions clés : l'identification des étudiants par RFID, le chronométrage autonome et l'hébergement d'une interface web. Les données sont stockées localement via LittleFS.
+      </p>
+    </div>
+    
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tâche à réaliser</th>
+        <th>Ressources utilisées</th>
+        <th>Traces</th>
+        <th>Autoévaluation</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td><b>Choix de l’Environnement de Développement (IDE)</b><br><br>
+          L’objectif de cette tâche préliminaire est d'évaluer les différents environnements de développement disponibles pour l'ESP32 et de sélectionner la solution la plus pertinente pour chaque phase du projet.<br><br>
+          
+          <b>Analyse :</b> Une analyse comparative a été menée (simplicité, bibliothèques, débogage, LittleFS).<br><br>
+          
+          <b>Stratégie adoptée :</b>
+          <ul>
+            <li><b>Phase de Prototypage (Arduino IDE) :</b> Retenu pour le développement des tâches unitaires (capteurs, ESP-NOW) pour sa simplicité. <i>(Réalisé)</i></li>
+            <li><b>Phase d'Intégration Avancée (PlatformIO) :</b> Choix pour la base de données et le serveur web (VS Code) grâce à la gestion des dépendances et le téléversement LittleFS. <i>(A faire pour le 15/12)</i></li>
+          </ul>
+        </td>
+<td><u>Pédagogique</u> :
+    <br>Comparatif technique IDE
+    <br><br>
+    <u>Logiciel</u> : 
+    <br><a href="https://www.arduino.cc/en/software" target="_blank">Arduino IDE</a>, <a href="https://platformio.org/" target="_blank">PlatformIO</a> (<a href="https://code.visualstudio.com/" target="_blank">VS Code</a>)
+    <br><br>
+    <u>Documentation</u> :
+    <br><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/" target="_blank">Documentation Espressif</a>
+    <br><br>
+    <u>Matériels</u> :
+    <br><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/hw-reference/esp32/get-started-devkitc.html" target="_blank">ESP32 Dev Kit</a>
+</td>
+        <td><a href="doc/Benchmark_ide.pdf" target="_blank">
+          <img src="images/benchmark_ide.png" alt="choix_ide" width="60%"></a></td>
+        <td>
+          10/10
+          <br><br>
+          Jusqu'à présent, le choix de l'IDE ne se posait pas, l'environnement Arduino étant mon standard habituel. Pour ce projet, j'ai pris l'initiative d'explorer d'autres alternatives. Je considère que l'analyse comparative menée est pertinente et que la stratégie hybride adoptée (Arduino pour le prototypage, PlatformIO pour l'intégration) s'est avérée être la solution optimale
+        </td>
+      </tr>
+
+      <tr>
+        <td><b>Rédaction du Cahier des Charges</b><br><br>
+          L’objectif est de définir, formaliser et valider l'ensemble des besoins, objectifs et contraintes du projet.<br><br>
+          <b>Critères détaillés :</b>
+          <ul>
+            <li><b>Contexte :</b> Salle GE210.</li>
+            <li><b>Utilisateurs :</b> Joueurs et Administrateurs.</li>
+            <li><b>Spécifications fonctionnelles :</b> Gestion RFID, chronométrage, IHM web.</li>
+            <li><b>Contraintes techniques :</b> ESP32, ESP-NOW, LittleFS.</li>
+          </ul>
+        </td>
+<td><u>Pédagogique</u> :
+    <br>Gestion de projet
+    <br><br>
+    <u>Logiciel</u> : 
+    <br><a href="https://www.microsoft.com/fr-fr/microsoft-365/word" target="_blank">Word</a>
+    <br><br>
+    <u>Documentation</u> :
+    <br><a href="#" title="Insérer le lien vers le PDF du sujet">Sujet de la SAE</a>
+</td>
+        <td><a href="doc/Cahier des charges.pdf" target="_blank">
+          <img src="images/cahier_des_charges.png" alt="cahier_charges" width="60%"></a>
+        <a href="images/principe_projet.jpg" target="_blank">
+          <img src="images/principe_projet.jpg" alt="cahier_charges" width="100%"></a></td>
+        <td>
+          8/10
+          <br><br>
+          La rédaction du cahier des charges a été un exercice particulièrement formateur. Si la décomposition du projet en tâches unitaires a représenté une difficulté initiale, je considère cette étape comme réussie. J'ai su tirer profit des ressources à ma disposition pour structurer une feuille de route cohérente.
+        </td>
+      </tr>
+
+      <tr>
+        <td><b>Mise en place de la communication inter-ESP (ESP-NOW)</b><br><br>
+          L’objectif est d'implémenter et valider la communication sans fil entre les trois modules (Central, Départ, Arrivée) pour assurer une faible latence.<br><br>
+          <b>Validation :</b>
+          <ul>
+            <li><b>Établissement de la communication :</b> Le Central reçoit distinctement les messages des deux balises. <i>(Réalisé)</i></li>
+            <li><b>Simulation :</b> Envoi via boutons poussoirs pour simuler les capteurs. <i>(Réalisé)</i></li>
+            <li><b>Réception :</b> Vérification sur le moniteur série confirmant le canal opérationnel. <i>(Réalisé)</i></li>
+          </ul>
+        </td>
+        <td><u>Pédagogique</u> :
+            <br>Protocoles réseaux, <a href="https://www.espressif.com/en/solutions/low-power-solutions/esp-now" target="_blank">ESP-NOW</a>
+            <br><br>
+            <u>Logiciel</u> : 
+            <br><a href="https://www.arduino.cc/en/software" target="_blank">Arduino IDE</a>
+            <br><br>
+            <u>Documentation</u> :
+            <br><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/network/esp_now.html" target="_blank">Espressif ESP-NOW API</a>
+            <br><br>
+            <u>Matériels</u> :
+            <br>3x <a href="https://www.espressif.com/en/products/socs/esp32" target="_blank">ESP32</a>, Boutons poussoirs
+        </td> 
+        <td>   
+          <a href="doc/Vulgarisation des concepts.pdf#page=1" target="_blank">
+          <img src="images/esp_now.jpeg" alt="esp_now" width="90%"></a></td>
+        <td>10/10
+          <br><br>
+          Cette tâche a été particulièrement enrichissante car elle m'a permis d'appréhender pour la première fois la communication sans fil inter-microcontrôleurs. La mise en œuvre réussie du protocole ESP-NOW confirme la pertinence de ce choix technique pour répondre aux contraintes de latence du projet. Je suis pleinement satisfait de la solution utilisée.
+        </td>
+      </tr>
+
+
+<tr>
+        <td><b>Étude et Choix des Capteurs de Détection</b><br><br>
+          L’objectif est de sélectionner la technologie la plus fiable pour les balises, capable de fonctionner indépendamment de l'éclairage ambiant de la salle.<br><br>
+          <b>Analyse comparative :</b>
+          <ul>
+            <li><b>IR Analogique & Modulé :</b> Testés mais rejetés. Bien que fonctionnels, ils se sont révélés trop sensibles aux variations de lumière (soleil/néons), risquant de provoquer des faux départs.</li>
+            <li><b>Ultrasons (HC-SR04) :</b> Rejeté. Malgré son immunité à la lumière, son "cône de détection" (15°-30°) manque de précision  pour définir un départ du robot.</li>
+            <li><b>Laser ToF (VL53L0X) :</b> <span style="color: green; font-weight: bold;">Solution retenue.</span> Technologie "Time of Flight" garantissant une immunité totale à la lumière et une précision millimétrique.</li>
+          </ul>
+        </td>
+        <td><u>Pédagogique</u> :
+          <br>Capteurs, Physique (Optique/Acoustique)
+          <br><br>
+          <u>Matériel</u> :
+          <br>Capteur Laser (VL53L0X), Capteur Ultrasons (HC-SR04), Capteurs IR (Pololu/Flying-Fish)
+          <br><br>
+          <u>Documentation</u> :
+          <br><a href="https://www.pololu.com/product/2490" target="_blank">Datasheet VL53L0X</a>
+        </td>
+        <td>
+          <a href="doc/Benchmark_capteur.pdf" target="_blank">
+            <img src="images/benchmark_capteur.png" alt="tableau_comparatif" width="60%">
+          </a>
+        </td>
+        <td>
+          10/10
+          <br><br>
+          Cette étude technique a été importante pour la fiabilité du projet. J'ai failli opter pour un capteur IR, mais son manque de précision m'a évité beaucoup de problèmes. Le choix de prendre le Laser (VL53L0X), bien que plus coûteux (20€), est justifié par sa fiabilité.
+        </td>
+      </tr>
+
+
+
+
+
+<tr>
+        <td><b>Création des Balises (Départ/Arrivée)</b>
+          <br><br>
+          Concevoir et programmer les modules autonomes chargés de détecter le passage des robots.<br><br>
+          <b>Méthodologie :</b>
+          <ul>
+            <li>
+                <a href="code/ESP32_Now_Button.zip" target="_blank" style="color: inherit; text-decoration: underline;">
+                    <b>Phase 1 - Simulation :</b>
+                </a> 
+                Bouton poussoir câblé pour valider la logique et l'envoi ESP-NOW. <i>(Réalisé)</i>
+            </li>
+            <li>
+                <a href="code/ESP32_Tx_Rx_IR.zip" target="_blank" style="color: inherit; text-decoration: underline;">
+                    <b>Phase 2 – Capteur IR :</b>
+                </a> 
+                Remplacement du bouton par le capteur infrarouge définitif (> 90% fiabilité). <i>(Réalisé)</i>
+            </li>
+          </ul>
+        </td>
+        <td><u>Pédagogique</u> :
+            <br>Capteurs, Électronique
+            <br><br>
+            <u>Logiciel</u> : 
+            <br><a href="https://www.arduino.cc/en/software" target="_blank">Arduino IDE</a> (Prototypage rapide)
+            <br><br>
+            <u>Documentation</u> :
+            <br><a href="https://www.pololu.com/product/2490" target="_blank">Datasheet Pololu VL53Lxx (ToF)</a>
+            <br><br>
+            <u>Matériels</u> :
+            <br><a href="https://www.espressif.com/en/products/socs/esp32" target="_blank">ESP32</a>, Capteur Laser (ToF), Boutons
+        </td>
+        <td>
+          <a href="images/breadboard_balise_IR.png" target="_blank">
+    <img src="images/breadboard_balise_IR.png" alt="pcb_kicad" width="100%"></a>
+            </td>
+        <td>10/10
+          <br><br>
+          L'approche step by step a été bénéfique. Valider la logique de communication avec un bouton (Phase 1) avant d'intégrer le capteur IR (Phase 2) a permis d'éviter de confondre les bugs logiciels et matériels. Les balises sont fonctionnelles.
+        </td>
+      </tr>
+
+<tr>
+  <td><b>Étude des solutions l’alimentation par batterie des balises</b><br><br>
+    L’objectif est d’autonomiser les balises (Départ/Arrivée) en supprimant la dépendance USB pour garantir une autonomie d'une journée.<br><br>
+    <b>Critères détaillés:</b>
+    <ul>
+       <li><b>Matériel :</b> Batterie LiPo 3.7V 300 mAh  .</li>
+       <li><b>Optimisation :</b> Mode "Deep Sleep" (cycle 200ms), autonomie cible ~37.5h.</li>
+       <li><b>Sécurité :</b> BMS logiciel via pont diviseur (2x 100kΩ), coupure sous 3.3V.</li>
+    </ul>
+  </td>
+<td><u>Matériel</u> :
+    <br><a href="https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/" target="_blank">XIAO ESP32-S3</a>, LiPo, Résistances
+    <br><br>
+  <u>Logiciel</u> : 
+    <br><a href="https://www.arduino.cc/en/software" target="_blank">Arduino IDE</a> (<a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-reference/system/sleep_modes.html" target="_blank">Deep Sleep</a>)
+    <br><br>
+  <u>Documentation</u> :
+    <br><a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf" target="_blank">Datasheet ESP32-S3</a>
+  </td>
+  <td><a href="doc/Etude des solutions d’alimentation de l’ESP32.pdf" target="_blank">
+    <img src="images/Etude_batterie.png" alt="batterie" width="60%"></a></td>
+  <td>
+    9/10
+    <br><br>
+    Cette tâche a été très instructive sur les contraintes IoT. J'ai compris que l'autonomie dépend surtout de l'efficacité du code.  La mise en place de la sécurité logicielle (coupure sous 3.3V) est une réussite qui fiabilise le prototype.
+  </td>
+</tr>
+
+<tr>
+        <td><b>Programmation du mode Deep Sleep</b><br><br>
+          L'objectif est de modifier le code des balises pour qu'elles passent la majorité du temps en veille profonde afin d'économiser la batterie.<br><br>
+          <b>Implémentation technique :</b>
+          <ul>
+            <li><b>Architecture :</b> Le code est exécuté uniquement dans le setup(). L'ESP32 se réveille, effectue sa mesure, transmet l'info si nécessaire, puis se rendort immédiatement (fonction goToSleep).</li>
+            <li><b>Protection Batterie :</b> Lecture de la tension au démarrage via le pont diviseur. Si la tension est critique (< 3.3V), l'ESP32 force une veille prolongée pour protéger la LiPo.</li>
+          </ul>
+          <br>
+          <a href="code/ESP32_with_lipo_ir.zip" target="_blank" style="color: black; font-weight: bold; text-decoration: underline;">Code source Deep Sleep</a>
+        </td>
+      <td><u>Logiciel</u> :
+          <br><a href="https://www.arduino.cc/en/software" target="_blank">Arduino IDE</a>
+          <br><br>
+          <u>Bibliothèques</u> :
+          <br><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-reference/system/sleep_modes.html" target="_blank">esp_sleep.h</a>, <a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/network/esp_now.html" target="_blank">esp_now.h</a>
+          <br><br>
+          <u>Matériel</u> :
+          <br><a href="https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/" target="_blank">XIAO ESP32S3</a>
+      </td>
+      <td><a href="https://lastminuteengineers.com/esp32-sleep-modes-power-consumption/" target="_blank">
+        <img src="images/esp32_sleep_mode.png" alt="batterie" width="90%"></a></td>
+        <td>10/10
+          <br><br>
+          L'implémentation est fonctionnelle. La logique de "State Machine" stockée en mémoire RTC permet de conserver une intelligence de détection (savoir si la voiture vient de partir ou d'arriver) tout en coupant le processeur entre deux mesures. La consommation mesurée valide l'autonomie visée.
+        </td>
+      </tr>
+
+<tr>
+  <td><b>Création d’un PCB pour les balises départs et arrivé</b><br><br>
+     L’objectif est de concevoir un circuit imprimé sur KiCad pour remplacer le câblage volant et fiabiliser l'intégration physique.<br><br>
+    <b>Critères détaillés:</b>
+    <ul>
+       <li><b>Schématique :</b> Intégration ESP32, VL53L0X et pont diviseur.</li>
+       <li><b>Routage :</b> Optimisation des pistes et réduction de l'encombrement.</li>
+       <li><b>Production :</b> Export des fichiers Gerber normalisés.</li>
+    </ul>
+    <br>
+            <a href="divers/PCB_Balise.zip" target="_blank" style="color: black; font-weight: bold; text-decoration: underline;">Fichiers KiCad</a>
+  </td>
+<td><u>Logiciel</u> :
+    <br><a href="https://www.kicad.org/" target="_blank">KiCad</a> (Schematic & PCB Editor)
+    <br><br>
+  <u>Matériel</u> : 
+    <br>Prototype sur <a href="https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard" target="_blank">breadboard</a>
+  </td>
+  <td><a href="doc/Vulgarisation des concepts.pdf#page=2" target="_blank">
+    <img src="images/pcb_balise.png" alt="pcb_kicad" width="60%"></a>
+    <a href="doc/Vulgarisation des concepts.pdf#page=2" target="_blank">
+    <img src="images/balise_without_lipo.png" alt="pcb_kicad" width="80%"></a></td>
+  <td>
+    8/10
+    <br><br>
+    Le passage au PCB permet de professionnaliser le prototype.  C'était une étape nécessaire pour garantir la robustesse du système face aux contraintes de déplacement sur la piste  .
+  </td>
+</tr>
+
+      
+<tr>
+  <td><b>Mise en place de l’alimentation par batterie des balises</b><br><br>
+    L’objectif est d’autonomiser les balises (Départ/Arrivée) en supprimant la dépendance USB pour garantir une autonomie d'une journée.<br><br>
+    <b>Méthodologie :</b>
+    <ul>
+       <li>
+         <a href="doc/Etude des solutions d’alimentation de l’ESP32.pdf" target="_blank" style="color: inherit; text-decoration: underline;">
+           <b>Phase 1 - Étude & Choix :</b>
+         </a>
+         Sélection de la batterie LiPo et du microcontrôleur XIAO S3. <i>(Réalisé)</i>
+       </li>
+       <li>
+         <a href="code/Deep_Sleep_BMS.zip" target="_blank" style="color: inherit; text-decoration: underline;">
+           <b>Phase 2 - Implémentation :</b>
+         </a>
+         Programmation du "Deep Sleep" et sécurité tension basse (< 3.3V). <i>(Réalisé)</i>
+       </li>
+    </ul>
+  </td>
+<td><u>Matériel</u> :
+    <br><a href="https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/" target="_blank">XIAO ESP32-S3</a>, LiPo, Résistances
+    <br><br>
+  <u>Logiciel</u> : 
+    <br><a href="https://www.arduino.cc/en/software" target="_blank">Arduino IDE</a> (<a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-reference/system/sleep_modes.html" target="_blank">Deep Sleep</a>)
+    <br><br>
+  <u>Documentation</u> :
+    <br><a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf" target="_blank">Datasheet ESP32-S3</a>
+  </td>
+  <td>
+    <a href="images/balise_with_lipo.png" target="_blank">
+    <img src="images/balise_with_lipo.png" alt="pcb_kicad" width="80%"></a></td>
+
+      </td>
+  <td>
+    10/10
+    <br><br>
+    Le choix du couple LiPo + Deep Sleep est un succès total. Les tests de précision ont prouvé que la mise en veille ne perturbe pas la réactivité. L'autonomie théorique dépasse largement le besoin de la JPO.
+  </td>
+</tr>
+
+
+
+
+
+
+
+<tr>
+        <td><b>Validation de la Précision et Latence</b><br><br>
+          L'objectif est de vérifier expérimentalement si le système respecte la contrainte de précision de 100ms malgré les latences de réveil et de transmission.<br><br>
+          <b>Protocole de test :</b>
+          <ul>
+            <li><b>Simulation :</b> Injection d'un signal carré (GBF) pour simuler des temps de course parfaits et répétables.</li>
+            <li><b>Conditions réelles :</b> Balises en Deep Sleep, réveil sur interruption (Front Montant = Départ / Descendant = Arrivée).</li>
+            <li><b>Résultat :</b> Écart moyen mesuré de <b>17ms</b> (Objectif < 100ms). Le système est 5 fois plus précis que demandé. (Réalisé)</li>
+          </ul>
+        </td>
+        <td>
+            <br><br>
+            <u>Matériel</u> : 
+            <br>GBF, <a href="https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/" target="_blank">XIAO ESP32S3</a>
+            <br><br>
+            <u>Méthode</u> :
+            <br>Comparaison Signal théorique vs Temps mesuré
+        </td>
+        <td><a href="doc/Validation de la Précision et Latence.pdf" target="_blank">
+          <img src="images/Validation de la Précision et Latence.png" alt="resultats_test" width="60%"></a></td>
+        <td>
+          10/10
+          <br><br>
+          Les résultats sont au-delà des espérances. Ce test a permis de comprendre que les latences de réveil des deux balises s'annulent mutuellement (symétrie), validant définitivement l'architecture ESP-NOW + Deep Sleep.
+        </td>
+      </tr>
+
+
+
+
+
+<tr>
+        <td><b>Mise en place et Validation du module RFID</b><br><br>
+          L’objectif est d'interfacer le lecteur MFRC522 avec l'ESP32 pour assurer la lecture des cartes étudiantes (IZLY).<br><br>
+          <b>Vérification effectuée :</b>
+          <ul>
+            <li>
+              <a href="code/ESP32_RFID_read.zip" target="_blank" style="color: inherit; text-decoration: underline;">
+                <b>Validation globale :</b>
+              </a>
+              Le lecteur est correctement relié au bus SPI. Le code permet de lire l'UID de la carte et de renvoyer le tag RFID de cette dernière pour confirmer la bonne détection. <i>(Réalisé)</i>
+            </li>
+          </ul>
+        </td>
+        <td><u>Pédagogique</u> :
+            <br><a href="https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi" target="_blank">Bus SPI</a>, Standard RFID
+            <br><br>
+            <u>Logiciel</u> : 
+            <br><a href="https://github.com/miguelbalboa/rfid" target="_blank">Bibliothèque MFRC522</a>
+            <br><br>
+            <u>Matériels</u> :
+            <br><a href="https://www.nxp.com/docs/en/data-sheet/MFRC522.pdf" target="_blank">Lecteur RC522</a>, <a href="https://www.espressif.com/en/products/socs/esp32" target="_blank">ESP32</a>, LEDs
+        </td>
+        <td>
+          <a href="images/breadboard_rfid.png" target="_blank">
+    <img src="images/breadboard_rfid.png" alt="pcb_kicad" width="100%"></a>
+            </td>
+        <td>10/10
+          <br><br>
+          Le capteur fonctionne parfaitement. La lecture est stable et le retour via le moniteur de série valide instantanément que la communication entre le module et l'ESP32 est opérationnelle.
+        </td>
+      </tr>
+
+<tr>
+        <td><b>Création du PCB pour le Contrôleur Central</b><br><br>
+             De même que pour les balises, l'objectif est de fiabiliser le poste de contrôle en remplaçant la "breadboard" par un circuit imprimé propre.<br><br>
+            <b>Critères détaillés :</b>
+            <ul>
+               <li><b>Schématique :</b> Intégration de l'ESP32 WROOM et du connecteur pour le lecteur RFID (Bus SPI).</li>
+               <li><b>Routage :</b> Création d'un plan de masse pour limiter les interférences sur la communication sans fil.</li>
+               <li><b>Ergonomie :</b> Placement des connecteurs pour faciliter l'usage lors de la JPO.</li>
+            </ul>
+            <br>
+            <a href="divers/EPS_mother.zip" target="_blank" style="color: black; font-weight: bold; text-decoration: underline;">Fichiers KiCad</a>
+        </td>
+        <td><u>Logiciel</u> :
+            <br><a href="https://www.kicad.org/" target="_blank">KiCad</a>
+            <br><br>
+            <u>Matériel</u> : 
+            <br><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/hw-reference/esp32/get-started-devkitc.html" target="_blank">ESP32 DevKit</a>, <a href="https://www.nxp.com/docs/en/data-sheet/MFRC522.pdf" target="_blank">Module RC522</a>, <a href="https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf" target="_blank">Écran OLED</a>
+        </td>
+        <td>
+          <a href="doc/Vulgarisation des concepts.pdf#page=5" target="_blank">
+            <img src="images/pcb_mother.png" alt="pcb_central" width="100%">
+          </a>
+          <a href="doc/Vulgarisation des concepts.pdf#page=5" target="_blank">
+            <img src="images/esp_mother.jpg" alt="pcb_central" width="100%">
+        </td>
+        <td>
+          9/10
+          <br><br>
+          Ce PCB est essentiel pour la stabilité. Le lecteur RFID étant sensible aux faux contacts (ce qui planterait le bus SPI), le fait de l'avoir sur un support soudé garantit que l'identification des étudiants fonctionnera sans accroc durant toute la journée.
+        </td>
+      </tr>
+
+
+<tr>
+        <td><b>Création de la Base de Données et Gestion des Résultats</b><br><br>
+          Concevoir la mémoire du système pour la persistance des informations via le système de fichiers LittleFS.<br><br>
+          <b>Phases :</b>
+          <ul>
+            <li><b>Phase 1 - Identification Dynamique :</b> Gestion des utilisateurs (Inconnu à Connu) et stockage dans le fichier CSV. <i>(Réalisé)</i></li>
+            <li><b>Phase 2 - Persistance des Scores :</b> Association Temps/Utilisateur et mise à jour du classement en temps réel. <i>(Réalisé)</i></li>
+            <li><b>Phase 3 - Archivage :</b> Génération et export des résultats. <i>(Réalisé)</i></li>
+          </ul>
+          <br>
+          <a href="code/ESP32_BDD.zip" target="_blank" style="color: black; font-weight: bold; text-decoration: underline;">Code source</a>
+        </td>
+        <td><u>Pédagogique</u> :
+            <br><a href="https://randomnerdtutorials.com/esp32-write-data-littlefs-arduino/" target="_blank">Systèmes de fichiers (LittleFS)</a>
+            <br><br>
+            <u>Logiciel</u> : 
+            <br><a href="https://www.arduino.cc/en/software" target="_blank">Arduino IDE</a> (avec <a href="https://randomnerdtutorials.com/arduino-ide-2-install-esp32-littlefs/" target="_blank">plugin LittleFS</a>)
+            <br><br>
+            <u>Documentation</u> :
+            <br>Libs LittleFS / <a href="https://arduinojson.org/" target="_blank">ArduinoJson</a>
+            <br><br>
+            <u>Matériels</u> :
+            <br>ESP32 Central
+        </td>
+        <td>
+          <a href="doc/Vulgarisation des concepts.pdf#page=7" target="_blank">
+          <img src="images/bdd.png" alt="esp_now" width="100%"></a>
+            </td>
+        <td>10/10
+          <br><br>
+          Contrairement à l'analyse initiale, j'ai choisi de réaliser l'intégralité du projet sous Arduino IDE. La prise en main de PlatformIO s'est avérée trop importante par rapport aux délais et aux temps que je voulais y consacrer. En restant sur un environnement maîtrisé, j'ai gagné en efficacité sur le développement, tout en réussissant à gérer le système de fichiers (LittleFS) grâce aux outils compatibles Arduino.
+        </td>
+      </tr>
+
+
+
+      
+      <tr>
+        <td><b>Mise en place du Démonstrateur (Portes Ouvertes)</b><br><br>
+          L’objectif est de présenter le projet finalisé aux visiteurs lors des Journées Portes Ouvertes (JPO) de l'IUT d'Angoulême. Le système doit être parfaitement stable et autonome.<br><br>
+          <b>Scénario de démonstration :</b>
+          <ul>
+            <li><b>Installation :</b> Déploiement de la piste et des 3 modules ESP32 sur le stand de présentation. <i>(A faire)</i></li>
+            <li><b>Expérience Visiteur :</b> L'utilisateur scanne sa carte (ou une carte de prêt), lance le robot, et tente de battre le record du jour affiché sur l'écran. <i>(A faire)</i></li>
+            <li><b>Support de Communication :</b> Création d'une affiche expliquant le fonctionnement technique (RFID, ESP-NOW) aux futurs étudiants. <i>(A faire)</i></li>
+          </ul>
+        </td>
+        <td><u>Pédagogique</u> :
+          <br>Communication technique, Déploiement
+          <br><br>
+        <u>Matériels</u> :
+          <br>Piste complète, Robots de démo, Stand JPO
+          <br><br>
+        </td>
+        <td>        
+          <a href="doc/Conception et Mise en place du Démonstrateur JPO.pdf" target="_blank">
+          <img src="images/demonstrateur_jpo.png" alt="demo_jpo" width="60%"></a>
+        <a href="divers/JPO_demonstrator.mp4" target="_blank">
+          <img src="images/jpo_demonstrator.png" alt="demo_jpo" width="100%"></a></td>
+        <td>10/10
+          <br><br>
+          Le démonstrateur fonctionne parfaitement. Le système fait preuve d'une bonne fiabilité : aucune perte de connexion ESP-NOW et les batteries tiennes tenu toute la journée (validant la stratégie Deep Sleep). L'affichage du classement en temps réel fonctionne correctement.
+        </td>
+      </tr>
+
+
+<tr>
+        <td colspan="4" class="analyse-personnelle">BILAN ET ANALYSE PERSONNELLE</td>
+      </tr>
+      <tr>
+        <td colspan="4" style="text-align: justify; line-height: 1.6;">
+          <p>
+            Ce projet a été un vrai défi pour moi. Ma plus grosse réussite, c'est la performance : en combinant ESP-NOW et le mode Deep Sleep, j'ai atteint une précision de 17ms (bien mieux que les 100ms demandés dans mon cahier des charges initial) avec des balises qui tiennent toute la journée sur batterie.
+          </p>
+          <p>
+            Côté organisation, j'ai dû faire des choix. J'ai préféré rester sur Arduino IDE plutôt que de perdre du temps à apprendre PlatformIO. Ça m'a permis de me concentrer sur les parties difficiles comme le système de fichiers (LittleFS), le RFID et la conception des cartes.
+          </p>
+          <p>
+            Enfin, passer de la breadboard au PCB sur KiCad a rendu le projet vraiment propre et solide. Le système a tourné en continu pendant la Journée Portes Ouvertes sans aucun bug ni problème de batterie, ce qui prouve que mes choix techniques étaient les bons.
+          </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

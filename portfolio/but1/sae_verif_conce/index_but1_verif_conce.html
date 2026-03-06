@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BUT1</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="images/logo_site_web.png">
+	<link rel="icon" sizes="32x32" href="images/logo_site_web.png">
+	<link rel="icon" sizes="16x16" href="images/logo_site_web.png">
+  <link rel="stylesheet" href="style_but1_verif_conce.css">
+</head>
+<body>
+  <div class="rectangle-titre">
+    <div class="titre">
+      <h1>Réalisation d'un sonomètre</h1>
+    </div>
+  </div>
+
+  <a href="https://updago.univ-poitiers.fr/pluginfile.php/415831/mod_resource/content/6/portfolio/index.html">
+		<img src="images/logo.png" alt="logo_home" class="logo_entete">
+	  </a>
+
+    <div class="objectiftxt">
+      <p>
+        L'objectif de cette SAE est de concevoir un sonomètre et une interface utilisateur en Python pour afficher de manière plus claire les informations mesurées par le sonomètre. Pour ce faire, nous avons suivi plusieurs étapes précises pour la création du sonomètre, qui utilise des LED vertes, jaunes et rouges pour indiquer le niveau de bruit. En parallèle, nous avons travaillé sur la conception de l'interface utilisateur.      
+    </div>
+    
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tâche à réaliser</th>
+        <th>Ressources utilisées</th>
+        <th>Traces</th>
+        <th>Autoévaluation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Compréhension du circuit du sonomètre</b><br><br>
+          L'objectif de cette première étape de comprendre comment fonctionne le circuit du sonomètre fournis en amont pour pouvoir ensuite mieux réalisé les étapes qui suivent.
+        </td>
+        <td><u>Pédagogique </u>: Cours Electronique (M.Cordeau)</td>
+        <td><a href="doc/sono_schema.pdf" target="_blank">
+          <img src="images/schema_elec.png" alt="schema_elec" width="45%"></a>
+          <a href="images/fct_elec.jpg" target="_blank">
+          <img src="images/fct_elec.jpg" alt="schema_elec" width="42%"></a></td>
+        <td>9/10
+          <br><br>
+          Cette partie fut assez simple et intéressante, car j'avais déjà brièvement étudié des circuits similaires.
+        </td>
+      </tr>
+      <tr>
+        <td><b>Routage du circuit</b> <br><br>
+          Cette étape est cruciale pour connecter correctement les composants électroniques sur la carte, en respectant les contraintes d'espace.</td>
+        <td><u>Logiciel</u> : Kicad
+          <br><br>
+          <u>Pédagogique</u> : Cours sur Kikad du 1er semestre (M.Christophe Guitton)</td>
+        <td><a href="images/kicad_routage.png" target="_blank">
+          <img src="images/kicad_routage.png" alt="routage carte" width="60%"></a></td>
+        <td>7/10
+          <br><br>
+          Le routage fut plus compliqué pour moi, cependant, j'ai réussi à obtenir un résultat que je juge satisfaisant.
+        </td>
+      </tr>
+      <tr>
+        <td><b>Fabrication de la carte</b><br><br>
+          Cette étape consiste à reporter le routage précédemment fait sur une carte de cuivre. Pour ce faire, on utilise une imprimante à rayon ultraviolet et des produits chimiques afin de créer le pcb. </td>
+        <td><u>Matériels</u> : imprimante, révélateur...
+          <br><br><u>Pédagogique </u>: Formation à la création d'un PCP + Fiche procédure pour la création du PCP</td>
+        <td>            
+          <a href="images/creation_carte.jpg" target="_blank">
+          <img src="images/creation_carte.jpg" alt="création pcb" width="30%"></a></td>
+        <td>10/10
+          <br><br>
+          La fabrication de la carte n'a posé aucune difficulté particulière.
+        </td>
+      </tr>
+      <tr>
+        <td><b>Soudure des composants</b>
+          <br><br>
+          Cette étape est nécessaire dans la création d'un pcb fonctionnelle. En effet, il ne suffit pas de poser les composants sur la carte pour que ça fonctionne, mais il faut aussi les souder.
+        </td>
+        <td><u>Matériels</u> : fer à souder et perceuse
+          <br><br><u>Pédagogique</u> : Cours de soudure sur une carte d'entrainement
+          <br><br> <u>Documentation</u> : Schéma du circuit</td>
+        <td><a href="images/soudure.jpg" target="_blank">
+          <img src="images/soudure.jpg" alt="courbe de vitesse" width="30%"></a></td>
+        <td>10/10
+          <br><br>
+          La soudure des composants ne m'a posé aucun problème.
+        </td>
+      </tr>
+      <tr>
+        <td><b>Débogage de la carte</b>
+          <br><br>
+          Le débogage de la carte électronique est une étape cruciale pour détecter et résoudre les problèmes et les erreurs. Il est effectué à l'aide d'un multimètre capable de mesurer la continuité électrique, ce qui permet de vérifier les connexions et les circuits de la carte.
+        </td>
+        <td><u>Matériels</u> : Fiche de continuité, multimètre
+          <br><br> <u>Documentation</u> : Schéma électrique du sonomètre</td>       
+          <td>            
+            <a href="images/continuite.jpg" target="_blank">
+            <img src="images/continuite.jpg" alt="test2" width="40%"></a></td>
+        <td>10/10
+          <br><br>
+          La carte à fonctionner du second coup donc je n'ai debogger que très peu.
+        </td>
+      </tr>
+      <tr>
+        <td><b>Dessin d'une première interface</b><br><br>
+          Pour créer une interface utilisateur, il faut d'abord concevoir son design en utilisant un logiciel dédié. Ce prototype visuel permet de définir l'agencement des éléments et les couleurs à utiliser. Ensuite, on peut implémenter l'interface avec un langage de programmation adapté.
+        </td>
+        <td> <u>Logiciel</u> : Google Drawing</td>        
+          <td>
+            <a href="images/design_sono.png" target="_blank">
+              <img src="images/design_sono.png" alt="design_sono" width="60%"></a>
+          </td>
+        <td>10/10
+          <br><br>
+          L'interface ne fut pas compliquée à designer, avec les bons outils, le travail fut rapide.
+        </td>
+      </tr>
+      <tr>
+        <td><b>Simulateur de trame avec son décodage pour connaitre le nombre de leds a allumer</b><br><br>
+          Cette étape permet de tester et de vérifier le fonctionnement du futur code de décodage, ainsi que d'identifier et de corriger les erreurs. C'est donc une étape importante pour garantir la fiabilité du code.
+        </td>
+        <td><u>Pédagogique </u>: Cours en Python du Lycée et du premier semestre (M.Vergnerie)
+          <br><br>
+          <u>Logiciel</u> : Python
+        </td>
+        <td>
+          <a href="images/trame_python.jpg" target="_blank">
+            <img src="images/trame_python.jpg" alt="trame_python" width="35%"></a>
+        </td>
+        <td>8/10
+          <br><br>
+          Simuler la trame me posa un peu de problème au début, mais j'ai très rapidement compris et j'ai su résoudre les problèmes.
+        </td>
+      </tr>
+      <tr>
+        <td><b>Création du code</b><br><br>
+          Cette étape est l'une des plus importantes, elle permet de créer l'interface utilisateur. Pour ce faire, on utilise python et ses bibliothèques et le design préalablement fait pour pouvoir gagner du temps sur l'organisation des éléments.        </td>
+        <td><u>Pédagogique </u>: Cours en Python du Lycée et du premier semestre (M.Vergnerie)
+          <br><br>
+          <u>Logiciel</u> : Python
+        </td>
+        <td>
+          <a href="autres/Fenetre_Sonometre_Thomas_Mathieu_.py" target="_blank">
+            <img src="images/logo_code.jpg" alt="code" width="50%">
+          </a>
+        </td>
+        <td>10/10
+          <br><br>
+          La création du code fut longue et fastidieuse, mais non avons réussi à obtenir un travail que nous jugeons très bon.
+        </td>
+      </tr>
+      <tr>
+        <td><b>Débogage du code</b><br><br>
+          Cette étape est nécessaire pour le bon fonctionnement du code. En effet, le code peut sembler fonctionner de premier abord, mais il peut y avoir des bugs cachés, cette étape est là pour enlever les derniers bugs persistants.        </td>
+        <td><u>Pédagogique </u>: Cours en Python du Lycée et du premier semestre (M.Vergnerie)
+          <br><br>
+          <u>Logiciel</u> : Python
+        </td>
+        <td>
+          Non renseignée
+        </td>
+        <td>9/10
+          <br><br>
+          Le débogage du code fut rapide, car nous n'avons pas beaucoup de problèmes dans le code.
+        </td>
+      </tr>
+      <tr>
+        <td><b>Tests pour trouver un lien entre la trame et le nombre de décibels</b><br><br>
+          Pour améliorer la précision du sonomètre, nous avons établi une relation entre la trame envoyée par la carte et les décibels. Cela nous permet de calculer le niveau sonore plus précisément.        </td>
+        <td><u>Pédagogique </u>: Cours de maths (M.Vergnerie)
+          <br><br>
+          <u>Logiciel</u> : GeoGebra
+        </td>
+        <td>
+          <a href="images/Courbe_lissage_sono.png" target="_blank">
+            <img src="images/Courbe_lissage_sono.png" alt="Courbe_lissage_sono" width="50%"></a>
+        </td>
+        <td>8/10
+          <br><br>
+          La recherche du lien entre les décibels et la trame envoyé par le sonomètre fut compliquée du fait de l'inédit de cette tâche qui ne fut jamais réalisé au paravent.
+        </td>
+      </tr>
+      <tr>
+        <td><b>Créer un mode d'emploi pour l'utilisation du sonomètre</b><br><br>
+          Cette étape est cruciale si nous voulons partager notre interface utilisateur avec d'autres personnes, car elle fournit des instructions claires et précises sur la façon de l'utiliser correctement, évitant ainsi toute confusion ou erreur.        </td>
+        <td>
+          <u>Logiciel</u> : Google Docs
+        </td>
+        <td>
+          <div style="display: flex; flex-direction: column;">
+            <a href="doc/mode_emploi.pdf" target="_blank">
+              <img src="images/mode_emploi.png" alt="trame_python" width="50%">
+            </a>
+          </div>
+        </td>
+        <td>10/10
+          <br><br>
+          La création du mode d'emploi ne fut pas compliquée étant donné que j'ai déjà eu l'occasion d'en réaliser dans le passé.
+        </td>
+      </tr>
+      <tr>
+        <td><b>Oral de soutenance</b><br><br>
+          Pour présenter notre projet SAE à nos professeurs, nous avons créé un diaporama qui résume les étapes clés de la conception du sonomètre et de son interface graphique.        </td>
+        <td>
+          <u>Logiciel</u> : Google Slide
+        </td>
+        <td>
+          <a href="autres/Présentation_Sonomètre.pptx" target="_blank">
+            <img src="images/logo_diapo.png" alt="trame_python" width="50%"></a>
+        </td>
+        <td>10/10
+          <br><br>
+          Étant donné que je suis à l'aise à l'oral, cette tâche ne fut pas compliqué pour moi.
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" class="analyse-personnelle">ANALYSE PERSONNELLE</td>
+      </tr>
+      <tr>
+        <td colspan="4">Cette SAE a été l'un de mes premiers projets importants et j'ai beaucoup apprécié la diversité des tâches à accomplir. Cependant, je n'ai pas trouvé la partie de routage de la carte très intéressante et j'aurais aimé avoir une plus grande partie sur la conception du circuit. Néanmoins, j'ai beaucoup apprécié la partie autonomie du projet, elle nous a permis de comprendre comment fonctionner les travaux de groupe, mais aussi elle nous a donné une certaine liberté sur la conception de l'interface utilisateur.<br>
+          <br>
+          Malgré cela, je suis très satisfait de ce projet car il m'a permis de développer mes compétences techniques et de renforcer mon esprit d'équipe.      </tr>
+    </tbody>
+  </table>
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

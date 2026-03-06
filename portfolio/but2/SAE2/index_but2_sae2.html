@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BUT2 SAE ....</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="images/logo_site_web.png">
+	<link rel="icon" sizes="32x32" href="images/logo_site_web.png">
+	<link rel="icon" sizes="16x16" href="images/logo_site_web.png">
+  <link rel="stylesheet" href="style_but2_sae2.css">
+</head>
+<body>
+  <div class="rectangle-titre">
+    <div class="titre">
+      <h1>Réalisation d'un cardiomètre à affichage déporté</h1>
+    </div>
+  </div>
+
+  <a href="../index_but2.html">
+		<img src="images/logo.png" alt="logo_home" class="logo_entete">
+	  </a>
+
+    <div class="objectiftxt">
+      <p>
+        Ce projet a pour objectif de concevoir un cardiomètre sans fil, capable de mesurer la fréquence cardiaque (bpm) à l'aide d'un capteur dédié, puis de transmettre cette donnée par radio à un IHM. Le système s’articule autour de plusieurs modules : La conception de l'émission avec un microcontrôleur ATtiny85 chargé de décoder les données et de les envoyer via un module radio, et un système de réception avec interface graphique permettant l’affichage des données en temps réel.
+      </p>
+    </div>
+    
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tâche à réaliser</th>
+        <th>Ressources utilisées</th>
+        <th>Traces</th>
+        <th>Autoévaluation</th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+      <tr>
+        <td><b>Etude de l’existant – concurrence – normes</b><br><br>
+          Cette étape préliminaire est très intéressante, car elle permet de voir ce qu’il se fait déjà comme produit sur le marché. Grâce à cette analyse, on sait ce qui est possible et ce qui ne l’est pas.</td>
+        <td><u>Pédagogique</u> : Cours de Vie en Entreprise
+          <br><br>
+        <u>Documentation</u> : AFNOR
+        </td>
+        <td><a href="doc/Livrable_VE_M_Dugue.pdf" target="_blank">
+          <img src="images/analyse_concu.png" alt="html_css" width="60%"></a></td>
+        <td>9/10
+          <br><br>
+          Cette analyse complète du produit a bien été réussi dans l’ensemble. Je suis satisfait du travail d’analyse que j’ai effectué. </td>
+      </tr>
+
+
+      <tr>
+        <td><b>Simulation et compréhension du capteur cardiaque </b> <br><br>
+          L’objectif de cette partie est de comprendre le circuit électrique du capteur donné en début de projet. Cette étude permet de savoir comment réagis le circuit en fonction des bpm et par extension, elle permet d’avoir un premier aperçu sur l’algorithmie à utiliser pour décoder les bpm.      
+          <td>
+          <u>Logiciel</u> : Simul IDE, LTspice
+            <br><br>
+          <u>Documentation</u> : Circuit électrique du capteur cardiaque
+          </td>
+        <td><a href="doc/simulation_lt_smul.pdf" target="_blank">
+          <img src="images/comprehension_capteur.png" alt="arborescence" width="60%"></a></td>
+        <td>7.5/10
+          <br><br>
+          Dans un premier temps, j'ai eu du mal à comprendre le fonctionnement du système électrique. Mais après avoir analysé composant par composant, j'ai su m'approprier le circuit électrique. Je pense que malgré la difficulté du début, cette tâche est une réussite.        </td>
+      </tr>
+
+
+      <tr>
+        <td><b>Conception d’un émetteur Tx à partir du TXM-433-LR</b><br><br>
+          Afin de pouvoir émettre pour la suite du projet, il était indispensable de réaliser un émetteur radio prototype pour comprendre le fonctionnement de ce dernier.
+        </td>
+        <td>
+        <u>Documentation</u> : Datasheet du LR Series Transmitter Module
+        </td>   
+        <td>   
+          <a href="doc/LINX-TXM-433-LR.pdf" target="_blank">
+          <img src="images/Tx_image.png" alt="style_site" width="60%"></a></td>
+        <td>10/10
+          <br><br>
+          Cette conception était relativement simple. J'ai suivi le schéma présent dans la datasheet ce qui ne m'a pas posé de problème particulier.        </td>
+      </tr>
+
+
+      <tr>
+        <td><b>Etude de l’émetteur et récepteur </b>
+          <br><br>
+          L’intérêt de cette partie est de comprendre comment fonctionne l’émetteur et le récepteur que l’on va utiliser pour la suite du projet. On va donc analyser ces différentes spécificités et son comportement.        </td>
+          <td>
+          <u>Documentation</u> : Datasheet de l’émetteur et du récepteur
+            <br><br>
+          <u>Matériels</u> : Émetteur et récepteur
+          </td>
+          <td>            
+            <a href="doc/Tom_O_Mathieu_D_RT_TR.pdf" target="_blank">
+            <img src="images/tx_rapport_de_test.jpg" alt="style_site" width="40%"></a>
+            <a href="doc/Tom_O_Mathieu_D_RT_TR_A2.pdf" target="_blank">
+            <img src="images/tx_livrable.jpg" alt="style_site" width="40%"></a></td>
+        <td>8/10
+          <br><br>
+          Pour cette partie, je m'occupais de la création de l'antenne. Je n'ai par conséquent, pas trop travaillé sur l'étude de l'émetteur et du récepteur. Cependant, je pense avoir compris toutes les notions notées dans le compte-rendu.         </td>
+      </tr>
+
+
+      <tr>
+        <td><b>Création du code décodant les bpm à l’aide d’une ATtiny85</b>
+          <br><br>
+          Afin de pouvoir lire les bpm et de les envoyer en signal radio, il est nécessaire de programmer un microcontrôleur servant d'intermédiaire entre les deux étapes. Pour ce faire, on utilise un ATtiny85, un contrôleur déjà utilisé sur le projet Voltmètre. Une fois les bpm décodés, ces derniers sont codé sur deux trames UART afin de pouvoir envoyer la donnée par signal radio.        </td>
+          <td>
+          <u>Logiciel</u> : Arduino IDE, Simul IDE
+            <br><br>
+          <u>Matériels</u> : ATtiny85
+          </td>  
+            <td>        
+            <a href="doc/Code_1_trames_Tx_with_id_selector/Code_1_trames_Tx_with_id_selector.ino" target="_blank">
+            <img src="images/logo_code.png" alt="exemple_contenu_page" width="60%"></a></td>
+        <td>10/10
+          <br><br>
+          Cette partie du projet était pour moi l'une des parties que j'ai apprécié réaliser. Je n'ai pas eu de grosse difficulté pour réaliser le code et ce dernier fonctionnait parfaitement en simulation.        </td>
+      </tr>
+
+
+      <tr>
+        <td><b>Vérification pratique de la simulation</b><br><br>
+         L'objectif de cette partie est de tester l'ATtiny85 en situation réelle. Pour ce faire, on utilise un GBF pour simuler le comportement du capteur, on le connecte à l'ATtiny85 qui va par la suite envoyer les bpm calculés sur l'émetteur utilisé dans la partie précédente. On compare ensuite ce qu'on envoie avec ce qu'on reçoit avec le récepteur.        </td>
+         <td>
+          <u>Logiciel</u> : Arduino IDE, Simul IDE
+            <br><br>
+          <u>Matériels</u> : ATtiny85
+        </td>
+        <td>        
+          <a href="images/trame_verif_simul.jpg" target="_blank">
+          <img src="images/trame_verif_simul.jpg" alt="mise_en_ligne" width="60%"></a></td>
+        <td>10/10
+          <br><br>
+          Le code utilisé en simulation a fonctionné parfaitement en pratique. Cette étape est une réussite.
+        </td>
+      </tr>
+      
+      
+      <tr>
+        <td><b>Création du PCB</b><br><br>
+         Pour pouvoir avoir un résultat plus propre et plus stable, il est nécessaire de réaliser un PCB. Pour le réaliser, j'ai reproduit mon circuit électrique sur Kicad et j'ai par la suite routé mon PCB.        </td>
+         <td>
+        <u>Logiciel</u> : Kicad
+          <br><br>
+        <u>Matériels</u> : Plaque de cuivre, divers composants
+        </td>
+        <td>        
+          <a href="images/circuit_elec_final_tx.png" target="_blank">
+          <img src="images/circuit_elec_final_tx.png" alt="mise_en_ligne" width="40%"></a>.
+          <a href="images/pcb_route.png" target="_blank">
+          <img src="images/pcb_route.png" alt="mise_en_ligne" width="40%"></a>
+          <a href="images/pcb_monte.jpg" target="_blank">
+          <img src="images/pcb_monte.jpg" alt="mise_en_ligne" width="40%"></a>
+        </td>
+        <td>9/10
+          <br><br>
+          La réalisation du PCB n'a pas posé de grande difficulté. Nous avons tout même du refaire plusieurs empreintes de composant, car il n'était pas disponible dans Kicad. Mis à part ces très léger problème, le PCB a fonctionné parfaitement.
+        </td>
+      </tr>
+
+      <tr>
+        <td><b>Création d’un Gantt prévisionnel pour la partie réception</b><br><br>
+         Cette partie permet de connaître le temps de réalisation de la partie réception. Grâce à cette prévisualisation, on peut correctement se répartir les tâches dans l'équipe.        </td>
+         <td><u>Pédagogique</u> : Cours de Vie en Entreprise
+          <br><br>
+        <u>Logiciel</u> : Gantt Project
+        </td>
+        <td>        
+          <a href="images/gantt.png" target="_blank">
+          <img src="images/gantt.png" alt="mise_en_ligne" width="60%"></a></td>
+        <td>10/10
+          <br><br>
+          La création des Gantt m'était déjà connu. De ce fait, je n'ai pas eu de problème à bien répartir les tâches jusqu’à deadline.
+        </td>
+      </tr>
+
+
+      <tr>
+        <td><b>Mise en place de TouchGFX</b><br><br>
+         Pour pouvoir réaliser une interface fluide et interactive, on a eu l'idée d'utiliser TouchGFX. Il permet de réaliser de nombreuses fonctions de façon dynamique et fluide ce qui est très intéressant pour un IHM.        </td>
+         <td>
+        <u>Logiciel</u> : TouchGFX, STM32CubeIDE, STM32CubeMX
+          <br><br>
+        <u>Matériels</u> : STM32F429 Discovery
+        </td>
+        <td>        
+          <a href="images/touch_gfx.png" target="_blank">
+          <img src="images/touch_gfx.png" alt="mise_en_ligne" width="60%"></a></td>
+        <td>5/10
+          <br><br>
+          Touch GFX m'a posé énormément de problème. Je n'ai pas réussi à réaliser ce que je voulais avec ce logiciel. Néanmoins, je pense avoir compris plusieurs nouvelles notions qui pourront me servir dans le futur.
+        </td>
+      </tr>
+
+
+      <tr>
+        <td><b>Création de l’IHM du cardiomètre</b><br><br>
+         Étant donné que TouchGFX n'a pas fonctionné. L’objectif de cette partie était de reprendre l'IHM du voltmètre et de l'adapter pour le cardiomètre. De plus, j'ai amélioré l'esthétique de l'IHM pour qu'elle soit plus agréable à utiliser.        </td>
+         <td><u>Pédagogique</u> :
+          <br><br>
+        <u>Logiciel</u> : STM32CubeIDE, Inkscape
+          <br><br>
+        <u>Matériels</u> : STM32F429 Discovery
+        </td>
+        <td>        
+          <a href="images/page_accueil.png" target="_blank">
+          <img src="images/page_accueil.png" alt="mise_en_ligne" width="40%"></a>.
+          <a href="images/lancerlamesure.png" target="_blank">
+          <img src="images/lancerlamesure.png" alt="mise_en_ligne" width="40%"></a>          
+          <a href="images/mesure.png" target="_blank">
+          <img src="images/mesure.png" alt="mise_en_ligne" width="40%"></a>.
+          <a href="images/history.png" target="_blank">
+          <img src="images/history.png" alt="mise_en_ligne" width="40%"></a>
+        </td>
+        <td>10/10
+          <br><br>
+          La création d'IHM est une notion que j'ai pu beaucoup travaillés durant mon stage. Je me suis donc occupé de cette partie dans l'objectif de la remettre au goût du jour. Je pense que l'IHM de ce projet est plus agréable visuellement que la version du voltmètre ce qui est une bonne progression.
+        </td>
+      </tr>
+
+
+      <tr>
+        <td><b>Décodage et affichage des bpm sur l'IHM</b><br><br>
+         Le but de cette tâche est de décoder les trames UART transmises par l’ATtiny85. Pour cela, on applique une logique inverse à celle utilisée lors de l'encodage des trames. Une fois les données extraites, elles sont affichées sur l’interface utilisateur, de la même manière que dans le projet Voltmètre.        </td>
+         <td>
+        <u>Logiciel</u> : STM32CubeIDE, STM32CubeMX
+          <br><br>
+        <u>Matériels</u> : STM32F429 Discovery
+        </td>
+        <td>        
+          <a href="images/bpm_live.mp4" target="_blank">
+          <img src="images/bpm_picture.jpg" alt="mise_en_ligne" width="40%"></a>
+          <a href="doc/SAE STM32 Cardio.zip" target="_blank">
+          <img src="images/logo_code_2.jpg" alt="mise_en_ligne" width="80%"></a>
+        </td>
+        <td>9/10
+          <br><br>
+          Cette tâche ne m'a pas posé de gros problème. Mis à part quelques problèmes mineurs concernant l'affichage, je pense que c'est une réussite.
+        </td>
+      </tr>
+
+
+      <tr>
+        <td><b>Création d'un graphique représentant les bpm en temps réel</b><br><br>
+         Le graphique a pour objectif de fournir un retour visuel en temps réel sur les BPM. Il permet également de conserver un court historique en affichant les valeurs précédentes.         </td>
+         <td>
+        <u>Logiciel</u> : STM32CubeIDE, STM32CubeMX
+          <br><br>
+        <u>Matériels</u> : STM32F429 Discovery
+        </td>
+        <td>        
+          <a href="images/bpm_live.mp4" target="_blank">
+          <img src="images/bpm_picture.jpg" alt="mise_en_ligne" width="40%"></a></td>
+        <td>10/10
+          <br><br>
+          Cette fonction ne fut pas réalisée par moi, je me suis occupé d'intégrer la fonction au code principale et je pense que son intégration est une réussite.
+        </td>
+      </tr>
+      
+
+
+      <tr>
+        <td><b>Création de l'historique et analyse des bpm</b><br><br>
+         L'objectif de cette partie est de pouvoir sauvegarder des valeurs de bpm précise. De plus, grâce à l'onglet historique, on est capable de savoir le minimum, le maximum et la moyenne des bpm des dernière mesure.        </td>
+         <td><u>
+        <u>Logiciel</u> : STM32CubeIDE, STM32CubeMX
+          <br><br>
+        <u>Matériels</u> : STM32F429 Discovery
+        </td>
+        <td>        
+          <a href="images/history_picture.jpg" target="_blank">
+          <img src="images/history_picture.jpg" alt="mise_en_ligne" width="40%"></a></td>
+        <td>10/10
+          <br><br>
+          Par rapport au projet Voltmètre, les fonctions historiques et sauvegarde sont une grande réussite. Je suis satisfait de ces fonctions.
+        </td>
+      </tr>
+      
+            <tr>
+        <td><b>Création du montage final</b><br><br>
+          La dernière étape du projet consiste à assembler les deux modules, l’émetteur et le récepteur, afin d’obtenir un cardiomètre fonctionnel et complet.</td>
+        <td>
+        <u>Matériels</u> : Montage parti émission plus partie réception connectée à la STM32F429
+        </td>
+        <td> Non disponible</td>
+        <td>10/10
+          <br><br>
+          Pour finir le projet, j'ai assemblé toutes les différentes parties de ce dernier. J'ai pu constater que le montage fonctionné parfaitement ce qui me permet de dire que ce projet est un succès.        </td>
+      </tr>
+
+      
+      
+      
+      
+      
+      
+      <tr>
+        <td colspan="4" class="analyse-personnelle">ANALYSE PERSONNELLE</td>
+      </tr>
+      <tr>
+        <td colspan="4">Ce projet a représenté un véritable défi. Le nombre de tâches à accomplir dans un délai très court a poussé mon équipe et moi-même à nous surpasser. J’ai dû considérablement progresser en termes d’organisation et de méthode de travail pour réussir ce challenge.          <br>
+          <br>
+          Sur le plan technique, ce projet ne m’a pas apporté de nouvelles notions majeures, car il reposait sur des compétences déjà acquises lors du projet Voltmètre. Cela m’a toutefois permis de gagner du temps sur la programmation et de consolider mes acquis.
+          <br>
+          <br>
+          En conclusion, ce projet est une réussite à la fois technique et organisationnelle. Je compte réutiliser plusieurs des méthodes de travail adoptées ici dans mes futures réalisations.
+          
+
+
+</tbody>
+  </table>
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

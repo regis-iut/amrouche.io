@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BUT1</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="images/logo_site_web.png">
+	<link rel="icon" sizes="32x32" href="images/logo_site_web.png">
+	<link rel="icon" sizes="16x16" href="images/logo_site_web.png">
+  <link rel="stylesheet" href="style_but1_robot.css">
+</head>
+<body>
+  <div class="rectangle-titre">
+    <div class="titre">
+      <h1>Robot suiveur de ligne</h1>
+    </div>
+  </div>
+
+  <a href="https://updago.univ-poitiers.fr/pluginfile.php/415831/mod_resource/content/6/portfolio/index.html">
+		<img src="images/logo.png" alt="logo_home" class="logo_entete">
+	  </a>
+
+    <div class="objectiftxt">
+      <p>
+        Le but de ce projet de fin d'année est de créer un robot suiveur de ligne sans utiliser de microcontrôleur. Pour cela, nous devons concevoir la partie électronique et intelligente du robot pour qu'il puisse suivre une ligne tracée au sol. Nous avons donc dû créer l'ensemble du système électrique du robot, en incluant la protection de la batterie, la génération d'un signal PWM pour contrôler la vitesse des moteurs,la détection de la ligne à l'aide de photodiodes, etc...      </p>
+    </div>
+    
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tâche à réaliser</th>
+        <th>Ressources utilisées</th>
+        <th>Traces</th>
+        <th>Autoévaluation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <tr>
+          <td><b>Vérifier le matériel</b><br><br>
+            L'objectif de cette tâche est de vérifier que tout le matériel nécessaire à la réalisation du robot suiveur de ligne est présent et fonctionnel, tel que les moteurs, les capteurs de ligne, les boutons fin de course et la batterie. Cette étape permet d'éviter les retards et les problèmes ultérieurs dans la réalisation du projet.
+          </td>
+          <td><u>Pédagogique </u>: Cours de M.Lucas
+            <br><br>
+            <u>Logiciel</u> : LTSpice
+            <br><br>
+            <u>Matériels</u> : carte pont en H, alimentation stabilisée, câbles(banane-banane/BNC-banane/BNC), oscilloscope, carte moteur
+          
+          </td>
+          <td>Non renseignée</td>
+          <td>10/10
+            <br><br>
+            Vérifier le matériel ne m'a pas poser de problème étant donné que nous avons appris à le faire durant le premier semestre.
+          </td>
+        </tr>      
+        
+        
+        
+        <tr>
+          <td><b>Planifier les fonctions et les tâches à réaliser</b><br><br>
+            L'objectif de cette tâche est de définir les fonctions et les tâches à réaliser pour la création du robot suiveur de ligne, de les organiser et de les planifier dans un Gantt. Cela permettra une gestion efficace du temps et des ressources pour la réalisation du projet.
+          </td>
+          <td><u>Pédagogique </u>: Cours de M.Hintzy 
+
+          <br><br>
+            <u>Logiciel</u> : GanttProject</td>
+          <td>Non renseignée</td>
+          <td>6/10
+            <br><br>
+            Planifier les tâches fut plus compliquer, nous n'avons pas réussi à correctement le faire au début du projet ce qui m'a poser des problèmes dans la suite du projet. Cependant, nous avons réussi à le réaliser une fois le projet lancé et ça nous a beaucoup aider.       
+            </td>
+        </tr>     
+        
+        
+        <tr>
+          <td><b>Calibrer les moteurs entre eux pour qu'ils tournent à la même vitesse</b><br><br>
+            L'objectif de cette tâche est de régler les moteurs du robot suiveur de ligne pour qu'ils tournent à la même vitesse. Cela permettra au robot de suivre la ligne de manière plus précise et régulière.
+          </td>
+          <td><u>Documentation </u>: SAE Vérifier carte moteur
+            <br><br>
+            <u>Matériels</u> : carte pont en H, alimentation stabilisée, câbles(banane-banane/BNC-banane/BNC), oscilloscope, carte moteur
+ </td>
+          
+          <td><a href="images/calibrage_moteur.jpg" target="_blank">
+            <img src="images/calibrage_moteur.jpg" alt="calibrage_moteur" width="60%"></a></td>
+          <td>10/10
+            <br><br>
+            Calibrer les moteurs entre eux ne m'a poser aucun problème, car ils tournaient à la même vitesse dès le début, nous avons uniquement vérifié et non manipuler sur cette tâche.
+          </td>
+        </tr>
+
+
+
+        <tr>
+          <td><b>Faire fonctionner et traiter les boutons fin de course</b><br><br>
+            L'objectif de cette tâche est de configurer et de tester les boutons fin de course du robot suiveur de ligne pour qu'ils arrêtent le robot lorsqu'ils sont activés. Cela permettra d'éviter les collisions et les dommages au robot.
+          </td>
+          <td><u>Pédagogique </u>: Cours de Mme Afef
+            <br><br>
+            <u>Matériels</u> : Alimentation stabilisée, câbles(banane-banane/BNC-banane/BNC), oscilloscope, bascule D, portes logiques, relais
+ 
+          </td>
+          <td><a href="images/fin de course.jpg" target="_blank">
+            <img src="images/fin_de_course.jpg" alt="fin de course" width="60%"></a></td>
+          <td>10/10
+            <br><br>
+            Ayant déjà réalisé un traitement des boutons fins de course dans le passé, cette partie ne m'a posé aucun problème technique.
+          </td>
+        </tr>
+
+
+
+        <tr>
+          <td><b>Faire fonctionner et traiter les photodiodes</b><br><br>
+            L'objectif de cette tâche est de faire fonctionner et de régler les photodiodes du robot suiveur de ligne pour qu'elles détectent correctement la ligne à suivre. 
+          </td>
+          <td><u>Pédagogique </u>:Cours de M.Lucas
+          <br><br>
+            <u>Matériels</u> : Alimentation stabilisée, câbles(banane-banane/BNC-banane/BNC), oscilloscope, arduino nano, écran LCD, OPB 704
+          </td>
+          <td><a href="images/testeur_opb.jpg" target="_blank">
+            <img src="images/testeur_opb.jpg" alt="testeur_opb" width="60%"></a></td>
+          <td>10/10
+            <br><br>
+            Pour faire fonctionner les OPB704, j'ai utilisé mes compétences en arduino et ça ne m'a pas poser de problème particulier.
+          </td>
+        </tr>
+
+
+
+        <tr>
+          <td><b>Faire un système de protection de la batterie</b><br><br>
+            L'objectif de cette tâche est de concevoir et de mettre en place un système de protection pour la batterie du robot suiveur de ligne, afin d'éviter les dommages causés par une décharge ou une charge excessive.
+          </td>
+          <td><u>Documentation </u>: Schéma de M,Lucas
+            <br><br>
+            <u>Logiciel</u> : LTSpice</td>
+          <td><a href="images/protection_batterie.png" target="_blank">
+            <img src="images/protection_batterie.png" alt="protection_batterie" width="60%"></a></td>
+          <td>8/10
+            <br><br>
+            La protection de la batterie fut compliquée à comprendre au début, mais j'ai réussi à la réaliser sans trop de problèmes.
+          </td>
+        </tr>
+
+
+
+        <tr>
+          <td><b>Créer un générateur PWM</b><br><br>
+            L'objectif de cette tâche est de créer un générateur de signal PWM pour contrôler la vitesse des moteurs du robot suiveur de ligne. Cela permet au robot de tourner lors des virages.
+          </td>
+          <td><u>Pédagogique </u>: Cours de M.Arnaud
+            <br><br>
+            <u>Logiciel</u> : LTSpice</td>
+          <td><a href="images/astable.png" target="_blank">
+            <img src="images/astable.png" alt="astable" width="60%"></a></td>
+          <td>10/10
+            <br><br>
+            La création d'un générateur PWM ne fut pas compliquée à réaliser, car nous avions déjà étudié le schéma en cours précédemment.
+          </td>
+        </tr>
+
+
+
+        <tr>
+          <td><b>Crée la fonction qui commande tout le robot</b><br><br>
+            L'objectif de cette tâche est de créer la fonction principale qui gère et coordonne toutes les autres fonctions et tâches du robot suiveur de ligne, afin qu'il puisse suivre la ligne de manière autonome.
+          </td>
+          <td><u>Pédagogique </u>: Cours d'électronique et d'informatique
+            <br><br>
+            <u>Logiciel</u> : LTSpice</td>
+          <td><a href="images/circuit_controle.png" target="_blank">
+            <img src="images/circuit_controle.png" alt="circuit_controle" width="60%"></a></td>
+          <td>9/10
+            <br><br>
+            La fonction qui commande tout le robot fut très longue à réaliser, mais j'estime l'avoir bien réussi.
+          </td>
+        </tr> 
+          
+          
+          <tr>
+        <td><b>Monter et tester le robot</b><br><br>
+          L'objectif de cette tâche est de monter le robot suiveur de ligne en utilisant les composants et le matériel vérifiés précédemment, puis de tester son fonctionnement pour s'assurer qu'il suit la ligne correctement.
+        </td>
+        <td><u>Matériels</u> : Robot</td>
+          <td><a href="images/robot.jpg" target="_blank">
+            <img src="images/robot.jpg" alt="circuit_controle" width="60%"></a></td>
+        <td>6/10
+          <br><br>
+Malheureusement, le robot n’a pas réussi à fonctionner correctement sur la piste.
+Lors des tests réalisés fonction par fonction, en dehors de la piste, tous les modules répondaient comme prévu.
+Cependant, une fois placé sur la piste, le robot n’a pas été capable de tourner suffisamment pour effectuer un virage, ce qui a compromis sa progression.
+        </td>
+      </tr>
+      
+
+
+        </tr>
+      <tr>
+        <td colspan="4" class="analyse-personnelle">ANALYSE PERSONNELLE</td>
+      </tr>
+      <tr>
+        <td colspan="4">Pour conclure cette année scolaire, nous avons reçu un défi : celui de créer le robot suiveur de ligne le plus rapide de la promotion. Animé par un esprit de compétition, j'ai pris ce projet très à cœur et j'ai été ravi de pouvoir mettre en pratique toutes les connaissances acquises au cours de l'année en GEII.
+          <br>
+          <br>
+          Travailler sur ce robot a été une expérience très enrichissante pour moi. J'ai trouvé la motivation nécessaire pour réaliser chacune des différentes fonctions, ce qui nous a permis, avec mon groupe, de sélectionner les meilleures fonctions pour que notre robot soit le plus performant.      
+          <br>
+          <br>
+          Je tire un bilan très positif de cette SAE. Elle m'a permis de me dépasser sur le plan pratique, mais aussi de renforcer ma compréhension des montages en électronique. Étant habitué aux projets avec des microcontrôleurs, cette façon, de réaliser un projet était totalement nouvelle pour moi et j'ai pris beaucoup de plaisir à la découvrir.
+        </tr>
+    </tbody>
+  </table>
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

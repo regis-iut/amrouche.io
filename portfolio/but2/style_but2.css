@@ -1,0 +1,110 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+.rectangle-titre {
+  position: fixed;
+  width: 100%;
+  height: 7.5vh;
+  background-color: #283f4b;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo_entete {
+  position: fixed;
+  width: 5%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  z-index: 1001; /* ou une autre valeur supérieure à 1000 */
+  top:1vh;
+  left:1vw;
+}
+
+.titre {
+  color: white;
+  font-size: 1.1vw;
+  margin: 0;
+}
+
+.button {
+  position: absolute;
+  left: 50vw;
+  top : 50vh;
+  transform: translate(-50%, -50%);
+  background-color: #283f4b;
+  color: white;
+  border: none;
+  border-radius: 1vw;
+  padding: 1.5% 5%; /* réduit le padding pour réduire la taille du bouton */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px; /* réduit la taille de la police pour réduire la taille du bouton */
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+
+.button {
+  box-sizing: border-box;
+  width: 60vh;
+  padding: 1vw;
+}
+
+#bouton1 {
+  position: absolute;
+  top: 20vh;
+  left: 25vw;
+}
+
+#bouton2 {
+  position: absolute;
+  top: 20vh;
+  left: 72vw;
+}
+
+
+
+
+
+
+.button:hover {
+  background-color: #0f7fff;
+}
+
+.text-large {
+  font-size: 1.7vw;
+  display: block;
+}
+
+.text-small {
+  font-size: 1.7vh;
+  display: block;
+}
+
+
+
+.image-voltmetre {
+  position: absolute;
+  top: 30vh;
+  left: 11vw;
+}
+
+.image-cardio {
+  position: absolute;
+  top: 38vh;
+  left: 60vw;
+}

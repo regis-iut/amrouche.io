@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BUT1</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="images/logo_site_web.png">
+	<link rel="icon" sizes="32x32" href="images/logo_site_web.png">
+	<link rel="icon" sizes="16x16" href="images/logo_site_web.png">
+  <link rel="stylesheet" href="style_but1_verif.css">
+</head>
+<body>
+  <div class="rectangle-titre">
+    <div class="titre">
+      <h1>Tests d'une carte de commande moteur</h1>
+    </div>
+  </div>
+
+  <a href="https://updago.univ-poitiers.fr/pluginfile.php/415831/mod_resource/content/6/portfolio/index.html">
+		<img src="images/logo.png" alt="logo_home" class="logo_entete">
+	  </a>
+
+    <div class="objectiftxt">
+      <p>
+        Ce projet, qui a été notre première SAE dans le cadre de cette année, impliquait la réalisation de quatre tests sur une carte moteur. Il avait également pour but de nous enseigner l'utilisation des différents équipements disponibles à l'IUT, tels que le générateur basse fréquence, l'oscilloscope et l'alimentation stabilisée, entre autres.
+        Enfin, cette SAE avait pour but de comparer la conformité de la carte moteur du fabricant avec les données fournies dans le document constructeur.
+        <br><br>
+        Pour réalisé cette SAE, deux documents nous on été fournies, <a href="doc/sujet.pdf" target="_blank">le sujet</a> et <a href="doc/datasheet.pdf" target="_blank">la datasheet</a> de la carte moteur.
+      </p>
+    </div>
+    
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tâche à réaliser</th>
+        <th>Ressources utilisées</th>
+        <th>Traces</th>
+        <th>Autoévaluation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Familiarisation avec l'utilisation des équipements</b><br><br>
+          L'objectif de cette étape commune à tous les tests est de se familiariser avec l'utilisation des équipements et de comprendre comment ils seront branchés entre eux. Cela permettra de s'assurer que les tests seront effectués correctement et que les résultats seront fiables.
+        </td>
+        <td><u>Pédagogique </u>: Cours TP (M.Ribero) et cours de SI du lycée</td>
+        <td>Non renseignée</td>
+        <td>10/10
+        <br><br>
+        J'ai très facilement pris en main les appareils, car j'ai eu l'occasion de les utiliser dans le passé.
+      </td></tr>
+      <tr>
+        <td><b>Réaliser un plan de câblage</b> <br><br>
+          Cette étape permet de visualiser la manière dont les appareils seront connectés les uns aux autres, cette étape commune à tous les tests est nécessaire.</td>
+        <td><u>Logiciel</u> : Google Drawing 
+          <br><br>
+          <u>Documentation</u> : Photos des équipements disponibles</td>
+        <td><a href="images/plan_cablage.png" target="_blank">
+          <img src="images/plan_cablage.png" alt="Plan de câblage" width="60%"></a></td>
+        <td>10/10
+        <br><br>
+        Le plan de câblage ne m'a pas posé de problème à réaliser, car j'avais bien compris le fonctionnement de la carte.
+      </td></tr>
+      <tr>
+        <td><b>Réaliser le réglage des appareils et le câblage</b><br><br>
+          Cette étape vise à régler et câbler les appareils pour qu'ils fonctionnent correctement et soient prêts pour les tests. Cela permet de détecter et résoudre les problèmes techniques, d'éviter les retards et les erreurs, et de garantir la fiabilité et la précision des résultats.</td>
+        <td><u>Pédagogique </u>: Cours TP (M.Ribero)</td>
+        <td>            
+          <a href="images/reglage_appareil.jpg" target="_blank">
+          <img src="images/reglage_appareil.jpg" alt="reglage_appareil" width="60%"></a></td>
+        <td>10/10
+        <br><br>
+        Réglés, les appareils correctement ne m'ont pas posé de problème.
+      </td></tr>
+      <tr>
+        <td><b>Test 1/4 : Vérification de la conformité de la carte</b>
+          <br><br>
+          La vérification de la conformité de la carte assure que l'interface valide la table de vérité de commande de sens de rotation, la commande de vitesse par signal PWM et la mesure du signal de vitesse, et vérifie l'état du moteur en testant une voie de la carte moteur.
+        </td>
+        <td><u>Matériels</u> : carte pont en H, alimentation stabilisée, câbles(banane-banane/BNC-banane/BNC), Générateur basses fréquences, oscilloscope, carte moteur
+          <br><br><u>Pédagogique</u> : Cours d'électronique
+          <br><br> <u>Documentation</u> : Sujet de la SAE</td>
+        <td><a href="doc/test1_4.pdf" target="_blank">
+          <img src="images/test1.png" alt="courbe de vitesse" width="60%"></a></td>
+        <td>10/10
+        <br><br>
+        Ce test fut le premier et il était très guidé, je n'eus aucun problème à suivre les indications données.
+      </td></tr>
+      <tr>
+        <td><b>Test 2 : Vérfication des valeurs de saturation et de consommation du moteur</b>
+          <br><br>
+          Ce test vérifie les valeurs de saturation et de consommation du moteur en mesurant les consommations à vide et avec un rapport cyclique de 100% et le moteur bloqué, qui ne doivent pas dépasser les valeurs typiques, ainsi que les tensions à l'entrée du moteur avec un rapport cyclique de 100% et le moteur bloqué pour vérifier les tensions de saturation typiques.
+        </td>
+        <td><u>Matériels</u> : carte pont en H, alimentation stabilisée, câbles(banane-banane/BNC-banane/BNC), Générateur basses fréquences, oscilloscope, carte moteur
+          <br><br><u>Pédagogique</u> : Cours d'électronique
+          <br><br> <u>Documentation</u> : Sujet de la SAE</td>       
+          <td>            
+            <a href="doc/test2.pdf" target="_blank">
+            <img src="images/test2.png" alt="test2" width="60%"></a></td>
+        <td>8/10
+        <br><br>
+        Ce test 2, fut pour moi le plus intéressant et ne m'a pas posé de problème particulier mis à part la compréhension des signaux qui fut compliqué au début.
+      </td></tr>
+      <tr>
+        <td><b>Test 3 : Vérfication des temps typiques de montée, descente et délais des différentes commutations</b><br><br>
+          Ce test vérifie les temps typiques de montée, descente et délais des commutations en mesurant les tensions de sortie pour valider les valeurs T1(Ven) et T3(Ven) données dans la spécification.
+        </td>
+        <td><u>Matériels</u> : carte pont en H, alimentation stabilisée, câbles(banane-banane/BNC-banane/BNC), Générateur basses fréquences, oscilloscope, carte moteur
+          <br><br><u>Pédagogique</u> : Cours d'électronique
+          <br><br> <u>Documentation</u> : Sujet de la SAE</td>        
+          <td>
+            <a href="doc/test3.pdf" target="_blank">
+              <img src="images/test 3_1.png" alt="test3" width="60%"></a>
+          </td>
+        <td>8/10
+        <br><br>
+        Ce test 3, fut pour moi moins intéressant, car j'ai eu du mal à comprendre l'intérêt de ce test avant une explication du professeur.
+      </td></tr>
+      <tr>
+        <td><b>Réalisation des comptes rendus</b><br><br>
+          Cette étape finale de la SAE est importante, car elle permet de retranscrire les mesures et les manipulations réalisées sur un document pouvant être utilisable ultérieurement.
+        </td>
+        <td><u>Pédagogique </u>: Cours de SI au lycée
+          <br><br>
+          <u>Logiciel</u> : Word
+        </td>
+        <td>
+          <div style="display: flex; flex-direction: column;">
+            <a href="doc/compte_rendu_1.pdf" target="_blank">Compte rendu 1</a>
+            <a href="doc/compte_rendu_2.pdf" target="_blank">Compte rendu 2</a>
+            <a href="doc/compte_rendu_3.pdf" target="_blank">Compte rendu 3</a>
+            <a href="doc/compte_rendu_4.pdf" target="_blank">Compte rendu 4</a>
+          </div>
+        </td>
+        <td>10/10
+        <br><br>
+        Les comptes-rendus ne m'ont posé aucun problème, car j'en avais déjà réalisé beaucoup avant cette SAE.</td>
+      </tr>
+      <tr>
+        <td colspan="4" class="analyse-personnelle">ANALYSE PERSONNELLE</td>
+      </tr>
+      <tr>
+        <td colspan="4">Cette première SAE a été importante pour moi. Chacun des tests que j'ai pu réaliser m'a permis de revoir et de renforcer mes connaissances en ce qui concerne les appareils de mesure disponible à l'IUT, mais aussi, elle m'a permis de mieux comprendre comment on contrôle un moteur à l'aide d'une carte moteur. De plus, il ne m'était pas venu à l'esprit avant cette SAE de vérifier les informations données dans la fiche constructeur, car comme j'ai pu le constater, des défauts de fabrication peuvent impacter la qualité de la carte moteur.
+          <br>
+          <br>
+          Personnellement, cette SAE a été bien réussie même si j'ai eu du mal à comprendre l'intérêt de la SAE au début. Cependant cette incompréhension c'est dissipé plus la SAE avançait.      </tr>
+    </tbody>
+  </table>
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

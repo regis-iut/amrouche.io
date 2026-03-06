@@ -1,0 +1,149 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+.rectangle-titre {
+  position: fixed;
+  width: 100%;
+  height: 7.5vh;
+  background-color: #283f4b;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo_entete {
+  position: fixed;
+  width: 5%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  z-index: 1001;
+  top: 1vh;
+  left: 1vw;
+}
+
+.titre {
+  color: white;
+  font-size: 1.1vw;
+  margin: 0;
+}
+
+.button {
+  position: absolute;
+  left: 50vw;
+  top: 50vh;
+  transform: translate(-50%, -50%);
+  background-color: #283f4b;
+  color: white;
+  border: none;
+  border-radius: 1vw;
+  padding: 2vw 12vw;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0f7fff;
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.text-large {
+  font-size: 2vw;
+  display: block;
+  margin-bottom: 0.5vh;
+  font-weight: bold;
+}
+
+.text-small {
+  font-size: 1.2vw;
+  display: block;
+  opacity: 0.9;
+}
+
+/* RESPONSIVE DESIGN */
+
+/* Tablettes (768px - 1024px) */
+@media only screen and (max-width: 1024px) {
+  .logo_entete {
+    width: 8%;
+  }
+
+  .titre {
+    font-size: 2vw;
+  }
+
+  .text-large {
+    font-size: 2.5vw;
+  }
+
+  .text-small {
+    font-size: 1.5vw;
+  }
+
+  .button {
+    padding: 2.5vw 15vw;
+  }
+}
+
+/* Smartphones (max 768px) */
+@media only screen and (max-width: 768px) {
+  .rectangle-titre {
+    height: 60px;
+  }
+
+  .logo_entete {
+    width: 12%;
+  }
+
+  .titre {
+    font-size: 3.5vw;
+  }
+
+  .button {
+    padding: 4vw 20vw;
+    border-radius: 2vw;
+  }
+
+  .text-large {
+    font-size: 5vw;
+    margin-bottom: 1vh;
+  }
+
+  .text-small {
+    font-size: 3.5vw;
+  }
+}
+
+/* Très petits écrans (max 480px) */
+@media only screen and (max-width: 480px) {
+  .titre {
+    font-size: 4vw;
+  }
+
+  .button {
+    padding: 5vw 15vw;
+    width: 80%;
+  }
+
+  .text-large {
+    font-size: 6vw;
+  }
+
+  .text-small {
+    font-size: 4vw;
+  }
+}

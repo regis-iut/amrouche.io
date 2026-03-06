@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BUT2 SAE ....</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="images/logo_site_web.png">
+	<link rel="icon" sizes="32x32" href="images/logo_site_web.png">
+	<link rel="icon" sizes="16x16" href="images/logo_site_web.png">
+  <link rel="stylesheet" href="style_but2_sae1.css">
+</head>
+<body>
+  <div class="rectangle-titre">
+    <div class="titre">
+      <h1>Réalisation d'un Voltmètre à affichage déporté</h1>
+    </div>
+  </div>
+
+  <a href="../index_but2.html">
+		<img src="images/logo.png" alt="logo_home" class="logo_entete">
+	  </a>
+
+    <div class="objectiftxt">
+      <p>
+        Le projet Voltmètre est un projet visant à développer les notions de conversion analogique vers numérique. Pour développer ces dernières, j’ai réalisé un voltmètre, un appareil omniprésent dans mon domaine d’étude. Ce dernier applique parfaitement les notions de conversion analogique vers numérique que l’on souhaite étudier. Afin de réaliser le voltmètre, j’ai décomposé le projet en deux grandes parties. La première était axée sur l’électronique et la réalisation d’un produit final à l’aide d’une ATtiny85. La seconde visait à réaliser un IHM en plus de l’électronique de mesure, dans l’optique d’améliorer l’expérience utilisateur de la première partie.
+      </p>
+    </div>
+    
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tâche à réaliser</th>
+        <th>Ressources utilisées</th>
+        <th>Traces</th>
+        <th>Autoévaluation</th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+      <tr>
+        <td><b>Etude du CAN MCP3201 et de la liaison SPI</b><br><br>
+Cette étape visait à comprendre le fonctionnement du convertisseur analogique-numérique MCP3201 et sa communication via le protocole SPI. L’analyse de sa datasheet m’a permis de cerner comment il convertit une tension en donnée numérique exploitable.        <td>
+        <u>Documentation</u> : Datasheet MCP3201
+
+        </td>
+        <td><a href="doc/MCP3201.pdf" target="_blank">
+          <img src="images/dip8.png" alt="html_css" width="40%"></a></td>
+        <td>10/10
+          <br><br>
+          Cette première étape n’a pas été la plus compliqué du projet. J’ai déjà eu l’occasion de travailler avec du matériel similaire. De ce fait, l’étude de ce composant a était assez rapide.</td>
+      </tr>
+
+
+      <tr>
+        <td><b>Routage et réalisation d’un support de programmation et test de l’ATtiny</b> <br><br>
+Il s’agissait de concevoir un circuit imprimé permettant de programmer l’ATtiny85. J’ai effectué le routage avec KiCad, puis réalisé physiquement le support à l’aide d’une plaque de cuivre et des composants nécessaires, pour obtenir une plateforme de test fonctionnelle.
+
+          <td>
+          <u>Logiciel</u> : Kicad
+            <br><br>
+          <u>Matériels</u> : Plaque de cuivre, divers composants, etc
+          </td>
+        <td><a href="images/montage_attiny85.png" target="_blank">
+          <img src="images/montage_attiny85.png" alt="schema_elec" width="45%"></a>
+          <a href="images/pcb_attiny85.png" target="_blank">
+          <img src="images/pcb_attiny85.png" alt="PCB" width="42%"></a></td>
+        <td>10/10
+          <br><br>
+          Ce PCB a été un défi pour moi. Je souhaiter réaliser ma propre carte de développement à l’aide d’une ATtiny85 ce qui a était une réussite</td>
+      </tr>
+
+
+      <tr>
+        <td><b>Prise en main et programmation de l’ATTiny</b><br><br>
+          L’ATtiny85 étant un microcontrôleur que je ne connaissais que de nom, j’ai appris à le programmer à l’aide de CodeVision AVR. J’ai utilisé des LED pour faire mes premiers tests. J’ai dû comprendre comment manipuler les registres et utiliser des masques.
+        </td>
+        <td>
+        <u>Logiciel</u> : CodeVision AVR
+          <br><br>
+        <u>Matériels</u> : ATtiny85, LED
+        </td>   
+        <td>   
+          <a href="doc/Programmation ATtiny AVR Studio 2024.docx" target="_blank">
+          <img src="images/c-logo.png" alt="style_site" width="40%"></a></td>
+        <td>../10
+          <br><br>
+          L’ATtiny85 m’étais connu que de nom. La prise en main de ce dernier n’a pas été facile car c’est une nouvelle façon de coder pour moi : Utilisation des masques et des registres </td>
+      </tr>
+
+
+      <tr>
+        <td><b>Mise en place d’un protocole SPI entre l’ATtiny85 et les périphériques</b>
+          <br><br>
+Le but ici était d’établir une communication fiable entre l’ATtiny85, le MCP3201 et d'autres composants via le protocole SPI. Une fois les mécanismes bien compris, la configuration du protocole s’est faite sans difficulté majeure.
+
+          <td><u>Pédagogique</u> : Cours d’électronique numérique
+            <br><br>
+          <u>Logiciel</u> : CodeVision AVR
+            <br><br>
+          <u>Matériels</u> : ATtiny85, MCP3201, LED
+          </td>
+          <td>            
+            <a href="doc/voltmetre_mcp6.c" target="_blank">
+            <img src="images/logo_code.jpg" alt="style_site" width="60%"></a></td>
+        <td>10/10
+          <br><br>
+          Après avoir compris le fonctionnement du contrôleur, crée des protocoles de communication ne m’a pas posé de problème particulier.</td>
+      </tr>
+
+
+      <tr>
+        <td><b>Mesure de la tension à l’aide d’un MCP3201</b>
+          <br><br>
+Cette tâche consistait à exploiter les données fournies par le MCP3201 pour en déduire une tension réelle. J’ai dû interpréter les signaux numériques transmis par le CAN et adapter le traitement pour obtenir une mesure exploitable par la suite.
+
+
+        </td>
+          <td>
+          <u>Logiciel</u> : CodeVision AVR
+            <br><br>
+          <u>Matériels</u> : ATtiny85, MCP3201, Afficheur 7 segments, MAX7219
+          </td>  
+            <td>        
+            <a href="doc/voltmetre_mcp6.c" target="_blank">
+            <img src="images/logo_code.jpg" alt="style_site" width="60%"></a></td>
+        <td>8/10
+          <br><br>
+          Le défi de cette partie n’été pas d’envoyer les bons signaux aux bons endroits mais bien de comprendre le signal de sortie et de comprendre comment l’exploiter</td>
+      </tr>
+
+
+      <tr>
+        <td><b>Affichage de la tension à l’aide d’un afficheur 7 segments 4 digits</b><br><br>
+L’objectif de cette étape était d'afficher les valeurs mesurées grâce à un afficheur 7 segments piloté par un MAX7219. Le défi principal a été de gérer la communication série avec un nombre limité de broches, tout en découvrant la logique série/ parallèle.
+
+         <td>
+        <u>Matériels</u> : ATtiny85, MCP3201, afficheur 7 segments 4 digits, MAX7219
+        </td>
+        <td>        
+            <a href="https://arduino-france.site/afficheur-4-digits/" target="_blank">
+            <img src="images/7seg4digit.png" alt="style_site" width="60%"></a>
+          <a href="doc/MAX7219-MAX7221.pdf" target="_blank">
+            <img src="images/max7219.webp" alt="style_site" width="60%"></a></td>
+        <td>9/10
+          <br><br>
+          Cette étape est l’une des plus difficile du projet. La conversion série vers parallèle m’étais complétement inconnu. De plus, j’étais fortement limité par le nombre de pin de l’ATtiny85 donc j’ai dû réutiliser certains signaux pour pouvoir réussir à utiliser un afficheur 7 segments 4 digits.
+        </td>
+      </tr>
+      
+      <tr>
+        <td><b>Mise en place du protocole SPI à l’aide d’une STM32</b><br><br>
+Cette partie consistait à adapter le protocole SPI développé pour l’ATtiny85 vers une carte STM32. Grâce à STM32CubeMX et STM32CubeIDE, j’ai pu réutiliser les principes précédents et les appliquer rapidement dans un nouvel environnement.
+
+         <td><u>Pédagogique</u> : Cours d’informatique sur les STM32
+          <br><br>
+        <u>Logiciel</u> : STM32CubeIDE, STM32CubeMX
+          <br><br>
+        <u>Matériels</u> : STM32F429 Discovery
+        </td>
+        <td>        
+          <a href="doc/main_code.c" target="_blank">
+          <img src="images/stm32.png" alt="mise_en_ligne" width="60%"></a></td>
+        <td>10/10
+          <br><br>
+          Pour la partie STM32, j’ai voulu réutiliser le travail réalisé sur l’ATtiny85. Par conséquent, j’ai utilisé la même fonction SPI que précédemment ce qui m’a permis d’aller très vite à cette étape.
+        </td>
+      </tr>
+
+      <tr>
+        <td><b>Création d’un IHM destiné au voltmètre</b><br><br>
+L’enjeu ici était de proposer une interface utilisateur claire et fonctionnelle. Même si je n’ai pas réalisé le code, j’ai activement participé à la conception en suggérant des fonctionnalités comme la navigation entre différents menus.
+
+         <td><u>Pédagogique</u> : Cours d’informatique sur les STM32
+          <br><br>
+        <u>Logiciel</u> : Inkscape, STM32CubeIDE, STM32CubeMX
+          <br><br>
+        <u>Matériels</u> : STM32F429 Discovery 
+        </td>
+        <td><a href="images/page_accueil.png target="_blank">
+          <img src="images/page_accueil.png" alt="schema_elec" width="42%"></a>
+          <a href="images/lancerlamesure.png" target="_blank">
+          <img src="images/lancerlamesure.png" alt="PCB" width="42%"></a>
+        <a href="images/mesure.png" target="_blank">
+          <img src="images/mesure.png" alt="PCB" width="42%"></a>
+        <a href="images/history.png" target="_blank">
+          <img src="images/history.png" alt="PCB" width="42%"></a></td>
+        <td>10/10
+          <br><br>
+          L’IHM ne fut pas réalisé par moi. Cependant, j’ai aidé à la conception de ce dernier, j’ai proposé diverses fonctions qui fut gardé comme le fait d’avoir plusieurs menus et de pouvoir naviguer entre eux.
+        </td>
+      </tr>
+
+
+      <tr>
+        <td><b>Traitement des données à l’aide de la STM32</b><br><br>
+Cette étape m’a permis de traiter les données issues du MCP3201 à l’aide de la STM32. En reprenant la logique développée sur l’ATtiny85, j’ai pu rapidement adapter le traitement des valeurs pour les intégrer dans l’interface.
+
+         <td>
+        <u>Logiciel</u> : STM32CubeIDE, STM32CubeMX
+          <br><br>
+        <u>Matériels</u> : STM32F429 Discovery, MCP3201
+        </td>
+        <td>        
+          <a href="doc/main_code.c" target="_blank">
+          <img src="images/logo_code.jpg" alt="mise_en_ligne" width="60%"></a></td>
+        <td>10/10
+          <br><br>
+          Cette étape n’était pas très compliquée, j’ai pu réutiliser la même logique que l’ATtiny85 ce qui m’a permis de réussir assez vite.
+        </td>
+      </tr>
+
+
+      <tr>
+        <td><b>Affichage de la tension sur l’IHM</b><br><br>
+         J’ai intégré le traitement des données dans l’IHM pour qu’elle affiche directement la valeur mesurée.        </td>
+         <td>
+        <u>Logiciel</u> : STM32CubeIDE, STM32CubeMX
+          <br><br>
+        <u>Matériels</u> : STM32F429 Discovery, MCP3201
+        </td>
+        <td>        
+          <a href="doc/main_code.c" target="_blank">
+          <img src="images/logo_code.jpg" alt="mise_en_ligne" width="60%"></a></td>
+        <td>9/10
+          <br><br>
+          Mis à part quelque problèmes non vitaux pour le voltmètre, l’affichage de la mesure n’a pas posé beaucoup de problème
+        </td>
+      </tr>
+
+
+      <tr>
+        <td><b>Ajout des fonctions annexes : Mode sauvegarde & historique</b><br><br>
+Cette dernière phase avait pour but d’enrichir l’IHM en y ajoutant des fonctionnalités complémentaires, comme un mode de sauvegarde des mesures et un historique. Faute de temps, seule la fonction de sauvegarde a été finalisée.         <td>
+        <u>Logiciel</u> : STM32CubeIDE, STM32CubeMX
+          <br><br>
+        <u>Matériels</u> : STM32F429 Discovery, MCP3201
+        </td>
+        </td>
+        <td>        
+          <a href="doc/main_code.c" target="_blank">
+          <img src="images/save.png" alt="mise_en_ligne" width="50%"></a></td>
+        <td>7/10
+          <br><br>
+          Cette étape est la dernière réalisée. Malheureusement, nous n’avons pas réussi à réaliser toutes les fonctions souhaitées, nous avons réussi seulement la sauvegarde des données.
+        </td>
+      </tr>
+
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <tr>
+        <td colspan="4" class="analyse-personnelle">ANALYSE PERSONNELLE</td>
+      </tr>
+      <tr>
+        <td colspan="4">Au-delà l’aspect technique de cette SAE, j’ai pris ce projet comme un défi pour moi. Étant responsable du groupe, mon objectif premier était de pouvoir exploiter le meilleur des compétences des personnes de mon groupe. Il m’a fallu faire preuve d’objectivité et d’analyse afin que chaque membre du groupe puisse s’épanouir au maximum tout en apprenant. Je pense que c’est une réussite dans l’ensemble même si beaucoup de progrès sont à faire pour pouvoir réussir mon objectif.<br>
+          <br>
+          D’un point de vue technique, la SAE Voltmètre était un projet que j’ai apprécié réaliser. J’ai réussi à me surpasser en apprenant beaucoup de nouvelles notions en plus de celle attendue. J’ai réussi à créer un produit fini (en électronique) ce qui me satisfait énormément.tbody>
+  </table>
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>
